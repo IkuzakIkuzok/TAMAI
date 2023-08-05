@@ -27,22 +27,20 @@ internal static class StatsUtils
     internal static double StandardDeviation(this IEnumerable<double> source, int ddof = 0)
         => Math.Sqrt(source.Variance(ddof));
 
-    internal static List<int> SmirnovGrubbs(this IEnumerable<int> source, double alpha = 0.5)
+    internal static List<int> SmirnovGrubbs(this IEnumerable<int> source, double alpha = .05)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));
 
-        var list = source.ToList();
+        var list = source.Order().ToList();
         while (true)
         {
             var n = list.Count;
             if (n <= 2) break;
-            var t = TDist.InverseSurvivalFunction((alpha / n) / 2, n - 2);
+            var t = TDist.InverseSurvivalFunction(alpha / (n << 1), n - 2);
             var tau = (n - 1) * t / Math.Sqrt(n * (n - 2) + n * t * t);
-            var i_min = list.FindIndex(x => x == list.Min());
-            var i_max = list.FindIndex(x => x == list.Max());
             var mu = list.Average();
             var std = list.Select(Convert.ToDouble).StandardDeviation();
-            var i_far = Math.Abs(list[i_max] - mu) > Math.Abs(list[i_min] - mu) ? i_max : i_min;
+            var i_far = Math.Abs(list[n - 1] - mu) > Math.Abs(list[0] - mu) ? n - 1 : 0;
             var tau_far = Math.Abs((list[i_far] - mu) / std);
             if (tau_far < tau) break;
             list.RemoveAt(i_far);
