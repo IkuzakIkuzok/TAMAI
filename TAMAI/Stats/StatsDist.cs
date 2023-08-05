@@ -8,6 +8,8 @@ namespace TAMAI.Stats;
 /// </summary>
 public abstract class StatsDist
 {
+    private const double EPSILON = 1e-10;
+
     /// <summary>
     /// Evaluates a probability density function with the specified value and degree of freedom.
     /// </summary>
@@ -32,7 +34,7 @@ public abstract class StatsDist
     /// <param name="dof">The degree of freedom.</param>
     /// <returns>The calculated function value.</returns>
     public virtual double CumulativeDistributionFunction(double x, int dof)
-        => Integrate(PDF(dof), double.MinValue, x);
+        => Integrate(PDF(dof), -1024.0, x);
 
     /// <summary>
     /// Evaluates a survival function with the specified value and degree of freedom.
@@ -41,7 +43,7 @@ public abstract class StatsDist
     /// <param name="dof">The degree of freedom.</param>
     /// <returns>The calculated function value.</returns>
     public virtual double SurvivalFunction(double x, int dof)
-        => Integrate(PDF(dof), x, double.MaxValue);
+        => Integrate(PDF(dof), x, 1024.0);
 
     /// <summary>
     /// Evaluates an inverse survival function with the specified value and degree of freedom.
@@ -57,11 +59,10 @@ public abstract class StatsDist
         // Newton's method
         // The first derivative of the survival function is a negative of the probability density function.
         var iter = 0;
-        while (!CompareDoubles(x0, x1) && iter++ < 1024)
+        while (!CompareDoubles(x0, x1) && iter++ < 128)
         {
             x0 = x1;
-            x1 = x0 + SurvivalFunction(x0, dof) / ProbabilityDensityFunction(x0, dof);
-            //System.Diagnostics.Debug.WriteLine(x1);
+            x1 += (SurvivalFunction(x1, dof) - x) / ProbabilityDensityFunction(x1, dof);
         }
 
         return x1;
@@ -79,14 +80,14 @@ public abstract class StatsDist
         var s0 = double.MinValue;
         var s1 = .0;
 
-        var n = 256;
+        var n = 4096;
         var iter = 0;
-        while (!CompareDoubles(s0, s1) && iter++ < 4)
+        while (!CompareDoubles(s0, s1) && iter++ < 8)
         {
             s0 = s1;
             s1 = Integrate(func, a, b, n);
             n <<= 1;
-            if ((b - a) / n < double.Epsilon) break;
+            if ((b - a) / n < EPSILON) break;
         }
 
         return s1;
@@ -108,10 +109,10 @@ public abstract class StatsDist
         {
             var x1 = a + i * w;
             var x2 = a + (i + 1) * w;
-            S += (func(x1) + func(x2)) * w / 2;
+            S += (func(x1) + func(x2));
         }
 
-        return S;
+        return S * w / 2;
     } // protected static double Integrate (Func<double, double>, double, double, int)
 
     /// <summary>
@@ -122,5 +123,5 @@ public abstract class StatsDist
     /// <returns><c>true</c> if two values are seem to be equal to each other;
     /// otherwise, <c>false</c>.</returns>
     protected static bool CompareDoubles(double x, double y)
-        => Math.Abs(x - y) < double.Epsilon * Math.Max(Math.Abs(x), Math.Abs(y));
+        => Math.Abs(x - y) < EPSILON * Math.Max(Math.Abs(x), Math.Abs(y));
 } // public abstract class StatsDist
