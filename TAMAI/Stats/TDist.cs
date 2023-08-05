@@ -29,8 +29,8 @@ public sealed class TDist : StatsDist
             var g = 1;
 
             var a = n >> 1;
-            for (var i = 2; i <= a; ++i)
-                g += i;
+            for (var i = 2; i < a; ++i)
+                g *= i;
 
             return g;
         }
@@ -38,7 +38,7 @@ public sealed class TDist : StatsDist
         {
             var g = SqrtPi;
 
-            for (var i = 3; i <= n; i += 2)
+            for (var i = 1; i < n; i += 2)
                 g *= i / 2.0;
 
             return g;
