@@ -6,7 +6,6 @@ namespace TAMAI.Win.Controls;
 using LiveCharts;
 using LiveCharts.Configurations;
 using LiveCharts.Wpf;
-using System;
 using System.IO;
 using System.Windows.Media;
 using TAMAI.Spectra;

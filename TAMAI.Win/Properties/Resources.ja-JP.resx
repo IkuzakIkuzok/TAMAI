@@ -213,4 +213,10 @@
   <data name="TitleOpenUsTas" xml:space="preserve">
     <value>usTASデータを開く</value>
   </data>
+  <data name="ToastOpenDir" xml:space="preserve">
+    <value>フォルダを開く</value>
+  </data>
+  <data name="ToastOpenFile" xml:space="preserve">
+    <value>開く</value>
+  </data>
 </root>

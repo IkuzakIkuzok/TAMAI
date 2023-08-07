@@ -4,11 +4,14 @@
 using LiveCharts;
 using LiveCharts.Wpf;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using TAMAI.Data;
 using TAMAI.Spectra;
 using TAMAI.Win.Properties;
+using TAMAI.Win.Utils;
 using MBrushes = System.Windows.Media.Brushes;
 
 namespace TAMAI.Win.Controls;
@@ -363,12 +366,7 @@ internal class MainForm : AutoResizeForm
         try
         {
             this.data.Save();
-            MessageBox.Show(
-                Resources.MessageFileSaved,
-                Resources.ProductName,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            ToastNotification.Show(Resources.MessageFileSaved);
         }
         catch (Exception e)
         {
@@ -422,12 +420,7 @@ internal class MainForm : AutoResizeForm
         try
         {
             this.data.SaveAs(sfd.FileName);
-            MessageBox.Show(
-                Resources.MessageFileSaved,
-                Resources.ProductName,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            ToastNotification.Show(Resources.MessageFileSaved);
         }
         catch (Exception e)
         {
@@ -479,14 +472,13 @@ internal class MainForm : AutoResizeForm
 
         try
         {
-            using var sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8);
+            var filename = sfd.FileName;
+            using var sw = new StreamWriter(filename, false, Encoding.UTF8);
             this.data.Spectra.Export(sw, ranges);
-            MessageBox.Show(
-                Resources.MessageSpectraSaved,
-                Resources.ProductName,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            new ToastNotification(Resources.MessageSpectraSaved)
+                .AddButton(Resources.ToastOpenFile, _ => new Process() { StartInfo = new(filename) { UseShellExecute = true, } }.Start())
+                .AddButton(Resources.ToastOpenDir, _ => Process.Start("explorer.exe", $"/select,\"{filename}\""))
+                .Show();
         }
         catch (Exception e)
         {

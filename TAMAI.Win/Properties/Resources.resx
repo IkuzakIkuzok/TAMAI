@@ -219,4 +219,10 @@
   <data name="TitleSaveUsTas" xml:space="preserve">
     <value>Save usTAS data</value>
   </data>
+  <data name="ToastOpenDir" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="ToastOpenFile" xml:space="preserve">
+    <value>Open</value>
+  </data>
 </root>

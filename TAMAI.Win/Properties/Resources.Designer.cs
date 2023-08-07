@@ -365,5 +365,23 @@ namespace TAMAI.Win.Properties {
                 return ResourceManager.GetString("TitleSaveUsTas", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open folder.
+        /// </summary>
+        internal static string ToastOpenDir {
+            get {
+                return ResourceManager.GetString("ToastOpenDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        internal static string ToastOpenFile {
+            get {
+                return ResourceManager.GetString("ToastOpenFile", resourceCulture);
+            }
+        }
     }
 }
