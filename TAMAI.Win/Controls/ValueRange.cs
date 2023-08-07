@@ -14,4 +14,7 @@ internal class ValueRange<T> where T : IPhysicalQuantity<T>
         this.Start = start;
         this.End = end;
     } // ctor (T, T)
+
+    override public string ToString()
+        => $"{new ScientificValue<T>(this.Start)}–{new ScientificValue<T>(this.End)}";
 } // internal class ValueRange

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FilterExportSpectra" xml:space="preserve">
+    <value>CSV files|*.csv|All files|*.*</value>
+  </data>
   <data name="FilterOpenSavedTas" xml:space="preserve">
     <value>TAS data files|*.ustas;*.fstas|usTAS data files|*.ustas|fsTAS data files|*.fstas|All files|*.*</value>
   </data>
@@ -150,11 +153,17 @@
   <data name="MenuTool" xml:space="preserve">
     <value>&amp;Tool</value>
   </data>
+  <data name="MenuToolExportSpectra" xml:space="preserve">
+    <value>Export &amp;Spectra</value>
+  </data>
   <data name="MenuToolRegExts" xml:space="preserve">
     <value>Associate TAS file with TAMAI for Win</value>
   </data>
   <data name="MessageErrorDrawingSpectra" xml:space="preserve">
     <value>An error occurred while drawing spectra.</value>
+  </data>
+  <data name="MessageErrorExportSpectra" xml:space="preserve">
+    <value>An error occurred while saving the spectra.</value>
   </data>
   <data name="MessageErrorOpen" xml:space="preserve">
     <value>An error occurred while loading the TAS data.</value>
@@ -174,6 +183,9 @@
   <data name="MessageSaveBeforeOpen" xml:space="preserve">
     <value>Do you want to save the current data before open new one?</value>
   </data>
+  <data name="MessageSpectraSaved" xml:space="preserve">
+    <value>The spectra have been successfully saved.</value>
+  </data>
   <data name="PlaceholderSampleComment" xml:space="preserve">
     <value>Comment</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="TableHeaderTo" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="TitleExportSpectra" xml:space="preserve">
+    <value>Export spectra</value>
   </data>
   <data name="TitleOpenSavedTas" xml:space="preserve">
     <value>Open TAS data</value>

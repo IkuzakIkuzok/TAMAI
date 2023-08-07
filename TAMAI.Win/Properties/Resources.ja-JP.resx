@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FilterExportSpectra" xml:space="preserve">
+    <value>CSV ファイル|*.csv|すべてのファイル|*.*</value>
+  </data>
   <data name="FilterOpenSavedTas" xml:space="preserve">
     <value>TASデータ ファイル|*.ustas;*.fstas|usTASデータ ファイル|*.ustas|fsTASデータ ファイル|*.fstas|すべてのファイル|*.*</value>
   </data>
@@ -150,11 +153,17 @@
   <data name="MenuTool" xml:space="preserve">
     <value>ツール (&amp;T)</value>
   </data>
+  <data name="MenuToolExportSpectra" xml:space="preserve">
+    <value>スペクトルをエクスポート (&amp;S)</value>
+  </data>
   <data name="MenuToolRegExts" xml:space="preserve">
     <value>TASファイルをTAMAI for Winに関連付ける</value>
   </data>
   <data name="MessageErrorDrawingSpectra" xml:space="preserve">
     <value>スペクトル描画中にエラーが発生しました。</value>
+  </data>
+  <data name="MessageErrorExportSpectra" xml:space="preserve">
+    <value>スペクトルの保存中にエラーが発生しました。</value>
   </data>
   <data name="MessageErrorOpen" xml:space="preserve">
     <value>データの読み込み中にエラーが発生しました。</value>
@@ -174,6 +183,9 @@
   <data name="MessageSaveBeforeOpen" xml:space="preserve">
     <value>新しいデータを開く前に現在のデータを保存しますか。</value>
   </data>
+  <data name="MessageSpectraSaved" xml:space="preserve">
+    <value>スペクトルを保存しました。</value>
+  </data>
   <data name="PlaceholderSampleComment" xml:space="preserve">
     <value>コメント</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="TableHeaderTo" xml:space="preserve">
     <value>始点</value>
+  </data>
+  <data name="TitleExportSpectra" xml:space="preserve">
+    <value>スペクトルをエクスポート</value>
   </data>
   <data name="TitleOpenSavedTas" xml:space="preserve">
     <value>TASデータを開く</value>

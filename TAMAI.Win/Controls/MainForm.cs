@@ -5,7 +5,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.IO;
-using System.Security.Cryptography;
+using System.Text;
 using TAMAI.Data;
 using TAMAI.Spectra;
 using TAMAI.Win.Properties;
@@ -176,6 +176,13 @@ internal class MainForm : AutoResizeForm
             Text = Resources.MenuTool,
         };
         ms.Items.Add(tool);
+
+        var exportSpectra = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuToolExportSpectra,
+        };
+        exportSpectra.Click += ExportSpectra;
+        tool.DropDownItems.Add(exportSpectra);
 
         #endregion menu.tool
 
@@ -452,6 +459,47 @@ internal class MainForm : AutoResizeForm
 
     #endregion save
 
+    private void ExportSpectra(object? sender, EventArgs e)
+        => ExportSpectra();
+
+    private void ExportSpectra()
+    {
+        if (this.data?.Spectra == null) return;
+
+        var ranges = this.TimeRangeSelectionTable.Ranges;
+        if (!ranges.Any()) return;
+
+        using var sfd = new SaveFileDialog()
+        {
+            Title = Resources.TitleExportSpectra,
+            Filter = Resources.FilterExportSpectra,
+            FileName = CreateDefaultFilename("_spectra.csv"),
+        };
+        if (sfd.ShowDialog() != DialogResult.OK) return;
+
+        try
+        {
+            using var sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8);
+            this.data.Spectra.Export(sw, ranges);
+            MessageBox.Show(
+                Resources.MessageSpectraSaved,
+                Resources.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+        catch (Exception e)
+        {
+            e.MakeCrashReport();
+            MessageBox.Show(
+                Resources.MessageErrorExportSpectra,
+                Resources.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
+        }
+    } // private void ExportSpectra ()
+
     private void SetDataManipulationEnabled()
     {
         if (this.data == null) return;
@@ -484,9 +532,7 @@ internal class MainForm : AutoResizeForm
 
             foreach (var range in this.TimeRangeSelectionTable.Ranges)
             {
-                var start = range.Start;
-                var end = range.End;
-                var series = spectra.GetLineSeries(start, end);
+                var series = spectra.GetLineSeries(range);
                 this.chart.Series.Add(series);
             }
         }

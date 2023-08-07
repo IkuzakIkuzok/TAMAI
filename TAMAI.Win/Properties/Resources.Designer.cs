@@ -61,6 +61,15 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CSV files|*.csv|All files|*.*.
+        /// </summary>
+        internal static string FilterExportSpectra {
+            get {
+                return ResourceManager.GetString("FilterExportSpectra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TAS data files|*.ustas;*.fstas|usTAS data files|*.ustas|fsTAS data files|*.fstas|All files|*.*.
         /// </summary>
         internal static string FilterOpenSavedTas {
@@ -160,6 +169,15 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export &amp;Spectra.
+        /// </summary>
+        internal static string MenuToolExportSpectra {
+            get {
+                return ResourceManager.GetString("MenuToolExportSpectra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Associate TAS file with TAMAI for Win.
         /// </summary>
         internal static string MenuToolRegExts {
@@ -174,6 +192,15 @@ namespace TAMAI.Win.Properties {
         internal static string MessageErrorDrawingSpectra {
             get {
                 return ResourceManager.GetString("MessageErrorDrawingSpectra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while saving the spectra..
+        /// </summary>
+        internal static string MessageErrorExportSpectra {
+            get {
+                return ResourceManager.GetString("MessageErrorExportSpectra", resourceCulture);
             }
         }
         
@@ -232,6 +259,15 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The spectra have been successfully saved..
+        /// </summary>
+        internal static string MessageSpectraSaved {
+            get {
+                return ResourceManager.GetString("MessageSpectraSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         internal static string PlaceholderSampleComment {
@@ -282,6 +318,15 @@ namespace TAMAI.Win.Properties {
         internal static string TableHeaderTo {
             get {
                 return ResourceManager.GetString("TableHeaderTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export spectra.
+        /// </summary>
+        internal static string TitleExportSpectra {
+            get {
+                return ResourceManager.GetString("TitleExportSpectra", resourceCulture);
             }
         }
         
