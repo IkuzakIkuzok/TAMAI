@@ -88,6 +88,15 @@ public sealed class MicroSecondTasData : TasData
         MakeSpectra();
     } // ctor (string)
 
+    /// <summary>
+    /// Asynchronously loads usTAS data.
+    /// </summary>
+    /// <param name="path">The path at which the raw data is loadted.</param>
+    /// <returns>A task that represents the asynchronous load operation,
+    /// which wraps the usTAS data.</returns>
+    public static async Task<MicroSecondTasData> LoadAsync(string path)
+        => await Task.Run(() => new MicroSecondTasData(path));
+
     /// <inheritdoc/>
     override protected void SaveTypeSpecificData(string dataDir)
     {

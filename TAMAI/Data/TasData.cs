@@ -145,6 +145,16 @@ public abstract class TasData
     } // public static T Load<T>(string filename) where T : TasData, new()
 
     /// <summary>
+    /// Asynchronously loads saved TAS data.
+    /// </summary>
+    /// <typeparam name="T">The type of TAS data.</typeparam>
+    /// <param name="filename">The filename of the TAS data.</param>
+    /// <returns>A task that represents the asynchronous load operation,
+    /// which wraps the TAS data.</returns>
+    public static async Task<T> LoadAsync<T>(string filename) where T : TasData, new()
+        => await Task.Run(() => Load<T>(filename));
+
+    /// <summary>
     /// Saves the type-specific data.
     /// </summary>
     /// <param name="dataDir">The directory to which the data are saved.</param>

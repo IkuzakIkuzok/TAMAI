@@ -32,7 +32,7 @@ internal class MainForm : AutoResizeForm
     [ResizeMode(ResizeType.AdjustLeft | ResizeType.AdjustHeight)]
     private readonly TextBox tb_comment;
 
-    private readonly ToolStripMenuItem menu_save, menu_saveAs;
+    private readonly ToolStripMenuItem menu_save, menu_saveAs, menu_exportSpectra;
 
     private string? SampleName => this.data?.Metadata.SampleName;
 
@@ -179,12 +179,13 @@ internal class MainForm : AutoResizeForm
         };
         ms.Items.Add(tool);
 
-        var exportSpectra = new ToolStripMenuItem()
+        this.menu_exportSpectra = new()
         {
             Text = Resources.MenuToolExportSpectra,
+            Enabled = false,
         };
-        exportSpectra.Click += ExportSpectra;
-        tool.DropDownItems.Add(exportSpectra);
+        this.menu_exportSpectra.Click += ExportSpectra;
+        tool.DropDownItems.Add(this.menu_exportSpectra);
 
         #endregion menu.tool
 
@@ -226,6 +227,33 @@ internal class MainForm : AutoResizeForm
 
     #region open
 
+    private void LoadTasData<T>(Func<string, Task<T>> tasLoader, Action setTimeRange, string path) where T : TasData, new()
+    {
+        void PostLoadTask(Task _)
+        {
+            if (this.data == null)
+            {
+                ToastNotification.Show(Resources.MessageErrorOpen);
+                return;
+            }
+
+            Invoke(() =>
+            {
+                this.tb_sampleName.Text = this.data.Metadata.SampleName;
+                this.tb_comment.Text = this.data.Metadata.Comment;
+
+                SetDataManipulationEnabled();
+                SetTitle();
+                DrawSpectra();
+            });
+        } // void PostLoadTask (Task)
+
+        tasLoader(path)
+            .ContinueWith(data => this.data = data.Result)
+            .ContinueWith((_) => Invoke(setTimeRange))
+            .ContinueWith(PostLoadTask);
+    } // private void LoadTasData (Func<string, Task<TasData>>, Action, string)
+
     private void OpenUsTasData(object? sender, EventArgs e)
     {
         if (!CheckUnsaved()) return;
@@ -238,29 +266,7 @@ internal class MainForm : AutoResizeForm
 
         if (ofd.ShowDialog() != CommonFileDialogResult.Ok) return;
 
-        try
-        {
-            this.data = new MicroSecondTasData(ofd.FileName);
-        }
-        catch (Exception ex)
-        {
-            ex.MakeCrashReport();
-            MessageBox.Show(
-                Resources.MessageErrorOpen,
-                Resources.ProductName,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error
-            );
-            return;
-        }
-
-        this.tb_sampleName.Text = this.data.Metadata.SampleName;
-        this.tb_comment.Text = this.data.Metadata.Comment;
-
-        SetDataManipulationEnabled();
-        SetTitle();
-        SetUsDefaultTimeRange();
-        DrawSpectra();
+        LoadTasData(MicroSecondTasData.LoadAsync, SetUsDefaultTimeRange, ofd.FileName);
     } // private void OpenUsTasData (object?, EventArgs)
 
     private void OpenFsTasData(object? sender, EventArgs e)
@@ -285,52 +291,26 @@ internal class MainForm : AutoResizeForm
 
     private void OpenSavedTasData(string filename)
     {
-        using var _ = new ControlDrawingSuspender(this);
-
         var ext = Path.GetExtension(filename).ToUpper();
-        try
+        if (ext == ".USTAS")
         {
-            if (ext == ".USTAS")
-            {
-                this.data = TasData.Load<MicroSecondTasData>(filename);
-                SetUsDefaultTimeRange();
-            }
-            else if (ext == ".FSTAS")
-            {
-                //TODO: implement fsTAS
-                //this.data = TasData.Load<FemtoSecondTasData>(filename);
-            }
-            else
-            {
-                MessageBox.Show(
-                    Resources.MessageNotSupportedFormat,
-                    Resources.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation
-                );
-                return;
-            }
-
-            if (this.data == null) throw new IOException("TAS data were not loaded correctly.");
+            LoadTasData(TasData.LoadAsync<MicroSecondTasData>, SetUsDefaultTimeRange, filename);
         }
-        catch (Exception ex)
+        else if (ext == ".FSTAS")
         {
-            ex.MakeCrashReport();
+            //TODO: implement fsTAS
+            //this.data = TasData.Load<FemtoSecondTasData>(filename);
+        }
+        else
+        {
             MessageBox.Show(
-                Resources.MessageErrorOpen,
+                Resources.MessageNotSupportedFormat,
                 Resources.ProductName,
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Error
+                MessageBoxIcon.Exclamation
             );
             return;
         }
-
-        this.tb_sampleName.Text = this.data.Metadata.SampleName;
-        this.tb_comment.Text = this.data.Metadata.Comment;
-
-        SetDataManipulationEnabled();
-        SetTitle();
-        DrawSpectra();
     } // private void OpenSavedTasData (string)
 
     private bool CheckUnsaved()
@@ -496,7 +476,7 @@ internal class MainForm : AutoResizeForm
         if (this.data == null) return;
 
         this.tb_sampleName.Enabled = this.tb_comment.Enabled = true;
-        this.menu_save.Enabled = this.menu_saveAs.Enabled = true;
+        this.menu_save.Enabled = this.menu_saveAs.Enabled = this.menu_exportSpectra.Enabled = true;
     } // private void SetDataManipulationEnabled ()
 
     private void SetUsDefaultTimeRange()
