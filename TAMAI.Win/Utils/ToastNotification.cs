@@ -14,7 +14,6 @@ internal class ToastNotification
     private static readonly Dictionary<string, ToastCallback> callbacks = new();
 
     static ToastNotification()
-
     {
         ToastNotificationManagerCompat.OnActivated += OnActivatedEventHandler;
     } // cctor ()

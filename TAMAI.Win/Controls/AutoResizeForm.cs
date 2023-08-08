@@ -42,7 +42,7 @@ internal abstract class AutoResizeForm : Form
                 SizeChanged += ((Func<Control, int, EventHandler>?)(horizontal switch
                 {
                     ResizeType.AdjustWidth => GetAdjustWidthEventHandler,
-                    ResizeType.AdjustLeft => GetAdjustLeftEventHandler,
+                    ResizeType.AdjustLeft  => GetAdjustLeftEventHandler,
                     _ => null,
                 }))?.Invoke(control, width);
             }
@@ -53,7 +53,7 @@ internal abstract class AutoResizeForm : Form
                 SizeChanged += ((Func<Control, int, EventHandler>?)(vertical switch
                 {
                     ResizeType.AdjustHeight => GetAdjustHeightEventHandler,
-                    ResizeType.AdjustTop => GetAdjustTopEventHandler,
+                    ResizeType.AdjustTop    => GetAdjustTopEventHandler,
                     _ => null,
                 }))?.Invoke(control, height);
             }

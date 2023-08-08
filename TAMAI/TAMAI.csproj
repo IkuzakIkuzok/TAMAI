@@ -8,6 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Version>0.0.1-alpha</Version>
+    <Authors>Kazuki Kohzuki</Authors>
+    <Company>Ohkita Lab</Company>
   </PropertyGroup>
 
 </Project>

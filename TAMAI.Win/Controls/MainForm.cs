@@ -6,7 +6,6 @@ using LiveCharts.Wpf;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Diagnostics;
 using System.IO;
-using System.Security.Cryptography;
 using System.Text;
 using TAMAI.Data;
 using TAMAI.Spectra;

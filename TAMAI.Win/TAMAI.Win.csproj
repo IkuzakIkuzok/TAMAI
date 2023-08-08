@@ -13,6 +13,14 @@
     <NoWarn>NU1701</NoWarn>
     
     <NeutralLanguage>en-US</NeutralLanguage>
+    
+    <StartupObject>TAMAI.Win.Program</StartupObject>
+    
+    <Authors>Kazuki Kohzuki</Authors>
+    
+    <Version>0.0.1-alpha</Version>
+    
+    <Company>Ohkita Lab</Company>
   </PropertyGroup>
 
   <ItemGroup>

@@ -26,16 +26,13 @@ internal static class SpectraUtils
         => spectra[timeRange.Start, timeRange.End];
 
     internal static LineSeries GetLineSeries(this Spectra spectra, TimeRange range)
-    {
-        var spectrum = spectra.GetSpectrum(range);
-        return new()
+        => new()
         {
             Title = range.ToString(),
             Configuration = spectrumMapper,
-            Values = spectrum.ToChartSpectrum(),
+            Values = spectra.GetSpectrum(range).ToChartSpectrum(),
             Fill = Brushes.Transparent,
         };
-    } // internal static LineSeries GetLineSeries (this Spectra, TimeRange)
 
     internal static void Export(this Spectra spectra, TextWriter writer, IEnumerable<TimeRange> ranges)
     {
