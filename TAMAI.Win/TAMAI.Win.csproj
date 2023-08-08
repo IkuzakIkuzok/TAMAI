@@ -7,7 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!--RuntimeIdentifier>win-x64</RuntimeIdentifier-->
     <ApplicationHighDpiMode>DpiUnaware</ApplicationHighDpiMode>
     
     <NoWarn>NU1701</NoWarn>
