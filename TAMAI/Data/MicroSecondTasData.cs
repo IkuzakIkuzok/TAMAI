@@ -48,7 +48,20 @@ public sealed class MicroSecondTasData : TasData
     /// <summary>
     /// Gets the background spectrum.
     /// </summary>
+    /// <remarks>
+    /// The background spectrum is an averaged spectrum in the time range between the first data point and the half of t0.
+    /// </remarks>
     public Spectrum? BackgroundSpectrum { get; private set; }
+
+    /// <summary>
+    /// Gets or sets the function to decide t0.
+    /// </summary>
+    /// <remarks>
+    /// It is possible to customize how t0 is determined by setting this property.
+    /// The list of raw data directories is passed to the functoin.
+    /// By default, t0 is determined as the peak position of the B signal, with statistical outlier exclusion.
+    /// </remarks>
+    public Func<IEnumerable<RawDataDirectory>, Time>? DetermineT0 { get; set; } = null;
 
     private IEnumerable<RawDataDirectory> WlDirs
         => this.rawData
@@ -130,16 +143,23 @@ public sealed class MicroSecondTasData : TasData
                 .Select(val => val.Trim())
                 .Select(double.Parse);
 
-        var indices = new int[wavelengths.Count];
-        foreach ((var i, var dir) in wavelengths.Values.Enumerate())
+        if (this.DetermineT0 != null)
         {
-            var file = (RawDataFile)dir.Files.First(f => f.Filename.EndsWith(BSignalSuffix));
-            var data = GetSignal(file).Select(double.Abs).Take(l_time >> 1).ToArray();
-            var maximum = data.Max();
-            var index = Array.IndexOf(data, maximum);
-            indices[i] = index;
+            this.AnalysisData.T0 = this.DetermineT0(this.WlDirs);
         }
-        this.AnalysisData.T0 = indices.SmirnovGrubbs().Select(i => time[i]).Average();
+        else
+        {
+            var indices = new int[wavelengths.Count];
+            foreach ((var i, var dir) in wavelengths.Values.Enumerate())
+            {
+                var file = (RawDataFile)dir.Files.First(f => f.Filename.EndsWith(BSignalSuffix));
+                var data = GetSignal(file).Select(double.Abs).Take(l_time >> 1).ToArray();
+                var maximum = data.Max();
+                var index = Array.IndexOf(data, maximum);
+                indices[i] = index;
+            }
+            this.AnalysisData.T0 = indices.SmirnovGrubbs().Select(i => time[i]).Average();
+        }
 
         var spectra = new double[l_time, wavelengths.Count];
         foreach ((var idx_wl, var dir) in wavelengths.Values.Enumerate())
