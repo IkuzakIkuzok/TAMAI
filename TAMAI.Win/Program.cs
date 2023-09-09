@@ -27,7 +27,7 @@ internal static class Program
         Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 #endif
 
-        crushReportLocation = ConfigurationManager.AppSettings["crash-report-location"];
+        crushReportLocation = ConfigurationManager.AppSettings["crash-report-location"]?.ExpandEnvironmentVariables();
 
         var usTasConfig = (NameValueCollection)ConfigurationManager.GetSection("usTAS");
         if (usTasConfig != null)
@@ -67,8 +67,9 @@ internal static class Program
         try
         {
             if (string.IsNullOrEmpty(crushReportLocation)) return;
+            Directory.CreateDirectory(crushReportLocation);
             var filename = Path.Combine(
-                Environment.ExpandEnvironmentVariables(crushReportLocation),
+                crushReportLocation,
                 $"cr-{DateTime.UtcNow:yyyy-MM-ddTHHmmss.fffffff}.txt"
             );
             using var sw = new StreamWriter(filename, false, Encoding.UTF8);
@@ -94,4 +95,7 @@ internal static class Program
             Debug.WriteLine(e.StackTrace);
         }
     } // internal static void MakeCrashReport (this Exception)
+
+    private static string ExpandEnvironmentVariables(this string s)
+        => Environment.ExpandEnvironmentVariables(s);
 } // internal static class Program
