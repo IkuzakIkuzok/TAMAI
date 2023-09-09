@@ -10,6 +10,7 @@ namespace TAMAI.Data;
 /// Serializes common metadata.
 /// </summary>
 [Serializable]
+[XmlRoot("common-metadata")]
 public sealed class CommonMetaData
 {
     private const string FILENAME = "metadata.xml";

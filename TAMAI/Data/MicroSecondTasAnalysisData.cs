@@ -11,6 +11,7 @@ namespace TAMAI.Data;
 /// Serializes analysis data for usTAS.
 /// </summary>
 [Serializable]
+[XmlRoot("ustas-analysis-data")]
 public sealed class MicroSecondTasAnalysisData
 {
     private const string FILENAME = "ustas.xml";

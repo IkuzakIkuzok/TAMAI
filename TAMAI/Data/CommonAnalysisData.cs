@@ -11,6 +11,7 @@ namespace TAMAI.Data;
 /// Serializes common analysis data.
 /// </summary>
 [Serializable]
+[XmlRoot("common-analysis-data")]
 public sealed class CommonAnalysisData
 {
     private const string FILENAME = "analysis.xml";
