@@ -55,7 +55,7 @@ internal static class SpectraUtils
 
         foreach ((var i, var wl) in wavelengths.ToArray().Enumerate())
         {
-            writer.Write(wl);
+            writer.Write(wl.Value);
             for (var j = 0; j < l_time; ++j)
             {
                 writer.Write(',');
