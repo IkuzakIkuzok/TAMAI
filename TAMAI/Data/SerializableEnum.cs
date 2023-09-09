@@ -20,8 +20,8 @@ public class SerializableEnum<T> where T : Enum
     /// </summary>
     public string Value
     {
-        get => this.value.ToString<SerializatoinTextAttribute>();
-        set => this.value = value.ToEnum<T, SerializatoinTextAttribute>();
+        get => this.value.ToString<SerializationTextAttribute>();
+        set => this.value = value.ToEnum<T, SerializationTextAttribute>();
     }
 
     /// <summary>

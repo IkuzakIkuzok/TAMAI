@@ -11,18 +11,18 @@ public enum TasTypes
     /// <summary>
     /// Not specified.
     /// </summary>
-    [SerializatoinText("not-specified")]
+    [SerializationText("not-specified")]
     NotSpecified,
 
     /// <summary>
     /// Microsecond-TAS (usTAS).
     /// </summary>
-    [SerializatoinText("us-tas")]
+    [SerializationText("us-tas")]
     MicroSecond,
 
     /// <summary>
     /// Femtosecond-TAS (fsTAS).
     /// </summary>
-    [SerializatoinText("fs-tas")]
+    [SerializationText("fs-tas")]
     FemtoSecond,
 } // public enum TasTypes
