@@ -38,6 +38,11 @@ public abstract class TasData
     public CommonMetaData Metadata { get; private set; } = new();
 
     /// <summary>
+    /// Gets the analysis data.
+    /// </summary>
+    public CommonAnalysisData AnalysisData { get; private set; } = new();
+
+    /// <summary>
     /// Gets raw data.
     /// </summary>
     public IReadOnlyList<RawData> RawData => this.rawData;
@@ -81,6 +86,7 @@ public abstract class TasData
             Directory.CreateDirectory(dataDir);
 
             this.Metadata.Save(dataDir);
+            this.AnalysisData.Save(dataDir);
 
             var rawDir = Path.Combine(dataDir, RAW_DIR);
             foreach (var raw in this.rawData)
@@ -129,6 +135,7 @@ public abstract class TasData
             {
                 Filename = filename,
                 Metadata = CommonMetaData.Load(dataDir),
+                AnalysisData = CommonAnalysisData.Load(dataDir),
                 Spectra = TAMAI.Spectra.Spectra.Load(spectraDir),
             };
 

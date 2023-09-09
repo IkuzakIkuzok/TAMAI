@@ -481,12 +481,23 @@ internal class MainForm : AutoResizeForm
 
     private void SetUsDefaultTimeRange()
     {
+        if (this.data == null) return;
         this.TimeRangeSelectionTable.Unit = "us";
         this.TimeRangeSelectionTable.Bias = 0.00_000_1;
         this.TimeRangeSelectionTable.Rows.Clear();
-        this.TimeRangeSelectionTable.Add(1.0, 1.2);
-        this.TimeRangeSelectionTable.Add(2.0, 2.5);
-        this.TimeRangeSelectionTable.Add(3.0, 5.0);
+        if (!this.data.AnalysisData.SpectraRange.Any())
+        {
+            this.data.AnalysisData.SpectraRange.AddRange(new SerializableValueRange<Time>[]
+            {
+                // TODO: determine appropriate default values from measured data
+                new(Time.FromDouble(1.0e-6), Time.FromDouble(1.2e-6)),
+                new(Time.FromDouble(2.0e-6), Time.FromDouble(2.5e-6)),
+                new(Time.FromDouble(3.0e-6), Time.FromDouble(5.0e-6)),
+            });
+        }
+
+        foreach (var range in this.data.AnalysisData.SpectraRange)
+            this.TimeRangeSelectionTable.Add(Math.Round(range.Start.MicroSecond.Second, 5), Math.Round(range.End.MicroSecond.Second, 6));
     } // private void SetUsDefaultTimeRange ()
 
     private void DrawSpectra(object? sender, EventArgs e)
@@ -500,9 +511,11 @@ internal class MainForm : AutoResizeForm
             if (spectra == null) return;
 
             this.chart.Series.Clear();
+            this.data!.AnalysisData.SpectraRange.Clear();
 
             foreach (var range in this.TimeRangeSelectionTable.Ranges)
             {
+                this.data.AnalysisData.SpectraRange.Add(new(range.Start, range.End));
                 var series = spectra.GetLineSeries(range);
                 this.chart.Series.Add(series);
             }

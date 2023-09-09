@@ -43,7 +43,7 @@ public sealed class MicroSecondTasData : TasData
     /// <summary>
     /// Gets the analysis data for usTAS measurement.
     /// </summary>
-    public MicroSecondTasAnalysisData AnalysisData { get; private set; } = new();
+    public MicroSecondTasAnalysisData MicrosecondAnalysisData { get; private set; } = new();
 
     /// <summary>
     /// Gets the background spectrum.
@@ -100,7 +100,7 @@ public sealed class MicroSecondTasData : TasData
     /// <inheritdoc/>
     override protected void SaveTypeSpecificData(string dataDir)
     {
-        this.AnalysisData.Save(dataDir);
+        this.MicrosecondAnalysisData.Save(dataDir);
 
         var bg = Path.Combine(dataDir, BACKGROUND);
         this.BackgroundSpectrum?.Save(bg);
@@ -109,7 +109,7 @@ public sealed class MicroSecondTasData : TasData
     /// <inheritdoc/>
     override protected void LoadTypeSpecificData(string dataDir)
     {
-        this.AnalysisData = MicroSecondTasAnalysisData.Load(dataDir);
+        this.MicrosecondAnalysisData = MicroSecondTasAnalysisData.Load(dataDir);
 
         var bg = Path.Combine(dataDir, BACKGROUND);
         if (File.Exists(bg))
@@ -154,7 +154,7 @@ public sealed class MicroSecondTasData : TasData
 
         if (this.DetermineT0 != null)
         {
-            this.AnalysisData.T0 = this.DetermineT0(this.WlDirs);
+            this.MicrosecondAnalysisData.T0 = this.DetermineT0(this.WlDirs);
         }
         else
         {
@@ -167,7 +167,7 @@ public sealed class MicroSecondTasData : TasData
                 var index = Array.IndexOf(data, maximum);
                 indices[i] = index;
             }
-            this.AnalysisData.T0 = indices.SmirnovGrubbs().Select(i => time[i]).Average();
+            this.MicrosecondAnalysisData.T0 = indices.SmirnovGrubbs().Select(i => time[i]).Average();
         }
 
         var spectra = new double[l_time, wavelengths.Count];
@@ -191,11 +191,11 @@ public sealed class MicroSecondTasData : TasData
                 .ToArray()
         );
 
-        var t_BG = (Time)this.AnalysisData.T0 / 2;
+        var t_BG = (Time)this.MicrosecondAnalysisData.T0 / 2;
         this.BackgroundSpectrum = rawSpectra[Time.Zero, t_BG];
 
         this.Spectra = new(
-            time.Select(t => t - this.AnalysisData.T0)
+            time.Select(t => t - this.MicrosecondAnalysisData.T0)
             .Select(t => new ScientificValue<Time>(t).Text)
             .Select(s => new ScientificValue<Time>(s).Value)
             .ToArray(),
