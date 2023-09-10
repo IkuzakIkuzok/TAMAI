@@ -26,27 +26,27 @@ public readonly struct Time : IRatioScalePhysicalQuantity<Time>
     /// <summary>
     /// Gets the time value, in ms.
     /// </summary>
-    public Time MilliSecond => this * 1_000;
+    public double MilliSecond => this.Second * 1_000;
 
     /// <summary>
     /// Gets the time value, in us.
     /// </summary>
-    public Time MicroSecond => this * 1_000_000;
+    public double MicroSecond => this.Second * 1_000_000;
 
     /// <summary>
     /// Gets the time value, in ns.
     /// </summary>
-    public Time NanoSecond => this * 1_000_000_000;
+    public double NanoSecond => this.Second * 1_000_000_000;
 
     /// <summary>
     /// Gets the time value, in ps.
     /// </summary>
-    public Time PicoSecond => this * 1_000_000_000_000;
+    public double PicoSecond => this.Second * 1_000_000_000_000;
 
     /// <summary>
     /// Gets the time value, in fs.
     /// </summary>
-    public Time FemtoSecond => this * 1_000_000_000_000_000;
+    public double FemtoSecond => this.Second * 1_000_000_000_000_000;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Time"/> structure.

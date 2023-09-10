@@ -497,7 +497,7 @@ internal class MainForm : AutoResizeForm
         }
 
         foreach (var range in this.data.AnalysisData.SpectraRange)
-            this.TimeRangeSelectionTable.Add(Math.Round(range.Start.MicroSecond.Second, 5), Math.Round(range.End.MicroSecond.Second, 6));
+            this.TimeRangeSelectionTable.Add(Math.Round(range.Start.MicroSecond, 5), Math.Round(range.End.MicroSecond, 6));
     } // private void SetUsDefaultTimeRange ()
 
     private void DrawSpectra(object? sender, EventArgs e)
