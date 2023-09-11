@@ -9,17 +9,22 @@ namespace TAMAI.Spectra;
 /// <summary>
 /// Represents a signal decay.
 /// </summary>
-public class Decay : IEnumerable<TimeSignal>
+/// <remarks>
+/// Initializes a new instance of the <see cref="Decay"/> class.
+/// </remarks>
+/// <param name="time">The time.</param>
+/// <param name="signals">The signals.</param>
+public class Decay(IEnumerable<Time> time, IEnumerable<Signal> signals) : IEnumerable<TimeSignal>
 {
     /// <summary>
     /// Times associated with the current instance. This field is readonly.
     /// </summary>
-    protected readonly Time[] time;
+    protected readonly Time[] time = time.ToArray();
 
     /// <summary>
     /// Signals associated with the current instance. This field is readonly.
     /// </summary>
-    protected readonly Signal[] signals;
+    protected readonly Signal[] signals = signals.ToArray();
 
     /// <summary>
     /// Gets the data count in the current decay data.
@@ -39,17 +44,6 @@ public class Decay : IEnumerable<TimeSignal>
             return this / norm;
         }
     }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Decay"/> class.
-    /// </summary>
-    /// <param name="time">The time.</param>
-    /// <param name="signals">The signals.</param>
-    public Decay(IEnumerable<Time> time, IEnumerable<Signal> signals)
-    {
-        this.time = time.ToArray();
-        this.signals = signals.ToArray();
-    } // ctor (IEnumerable<Time>, IEnumerable<Signal>)
 
     /// <inheritdoc/>
     public IEnumerator<TimeSignal> GetEnumerator()

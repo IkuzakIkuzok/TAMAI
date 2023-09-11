@@ -8,9 +8,13 @@ namespace TAMAI.Data;
 /// <summary>
 /// Represents a file of the raw data.
 /// </summary>
-public sealed class RawDataFile : RawData
+/// <remarks>
+/// Initializes a new instance of the <see cref="RawDataFile"/> class.
+/// </remarks>
+/// <param name="filename">The filename of the file.</param>
+public sealed class RawDataFile(string filename) : RawData(filename)
 {
-    private readonly byte[] data;
+    private readonly byte[] data = File.ReadAllBytes(filename);
 
     /// <summary>
     /// Gets the file content.
@@ -28,15 +32,6 @@ public sealed class RawDataFile : RawData
             return encoding?.GetString(this.data) ?? throw new IOException("Cannot load raw data as a text file.");
         }
     }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="RawDataFile"/> class.
-    /// </summary>
-    /// <param name="filename">The filename of the file.</param>
-    public RawDataFile(string filename) : base(filename)
-    {
-        this.data = File.ReadAllBytes(filename);
-    } // ctor (string) : base(string)
 
     /// <inheritdoc/>
     override public void SaveTo(string path)

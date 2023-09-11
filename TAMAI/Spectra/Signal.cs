@@ -9,7 +9,7 @@ namespace TAMAI.Spectra;
 /// Represents a TA signals.
 /// </summary>
 [PhysicalQuantity(nameof(OD), "OD")]
-public readonly struct Signal : IRatioScalePhysicalQuantity<Signal>, IFormattable
+public readonly struct Signal(double od) : IRatioScalePhysicalQuantity<Signal>, IFormattable
 {
     private static readonly Signal zero = new();
 
@@ -20,7 +20,7 @@ public readonly struct Signal : IRatioScalePhysicalQuantity<Signal>, IFormattabl
     /// <summary>
     /// Gets the singnal intensity, in OD.
     /// </summary>
-    public double OD { get; } = .0;
+    public double OD { get; } = od;
 
     /// <summary>
     /// Gets the singnal intensity, in mOD.
@@ -36,15 +36,6 @@ public readonly struct Signal : IRatioScalePhysicalQuantity<Signal>, IFormattabl
     /// Gets the absolute value of the signal.
     /// </summary>
     public Signal Absolute => Abs(this);
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Signal"/> structure.
-    /// </summary>
-    /// <param name="od">The signal value, in OD.</param>
-    public Signal(double od)
-    {
-        this.OD = od;
-    } // ctor (double)
 
     /// <inheritdoc/>
     public static Signal FromDouble(double od) => new(od);

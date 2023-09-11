@@ -11,7 +11,7 @@ namespace TAMAI.Spectra;
 /// </summary>
 [DebuggerDisplay("{Second} s")]
 [PhysicalQuantity(nameof(Second), "s")]
-public readonly struct Time : IRatioScalePhysicalQuantity<Time>
+public readonly struct Time(double second) : IRatioScalePhysicalQuantity<Time>
 {
     private static readonly Time zero = new();
 
@@ -21,7 +21,7 @@ public readonly struct Time : IRatioScalePhysicalQuantity<Time>
     /// <summary>
     /// Gets the time value, in s.
     /// </summary>
-    public double Second { get; } = .0;
+    public double Second { get; } = second;
 
     /// <summary>
     /// Gets the time value, in ms.
@@ -47,15 +47,6 @@ public readonly struct Time : IRatioScalePhysicalQuantity<Time>
     /// Gets the time value, in fs.
     /// </summary>
     public double FemtoSecond => this.Second * 1_000_000_000_000_000;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Time"/> structure.
-    /// </summary>
-    /// <param name="second">The time, in s.</param>
-    public Time(double second)
-    {
-        this.Second = second;
-    } // ctor (double)
 
     /// <inheritdoc/>
     public static Time FromDouble(double second) => new(second);

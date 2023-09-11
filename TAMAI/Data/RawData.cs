@@ -6,21 +6,16 @@ namespace TAMAI.Data;
 /// <summary>
 /// Represents a raw data of the TAS measurement.
 /// </summary>
-public abstract class RawData
+/// <remarks>
+/// Initializes a new instance of the <see cref="RawData"/> class.
+/// </remarks>
+/// <param name="filename">The filename of the data.</param>
+public abstract class RawData(string filename)
 {
     /// <summary>
     /// Gets the filename of the data.
     /// </summary>
-    public string Filename { get; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="RawData"/> class.
-    /// </summary>
-    /// <param name="filename">The filename of the data.</param>
-    public RawData(string filename)
-    {
-        this.Filename = Path.GetFileName(filename);
-    } // ctor (string)
+    public string Filename { get; } = Path.GetFileName(filename);
 
     /// <summary>
     /// Saves the current data in the specified path.

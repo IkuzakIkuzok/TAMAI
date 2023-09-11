@@ -6,26 +6,21 @@ namespace TAMAI.Data;
 /// <summary>
 /// Defines text value to serialize a value.
 /// </summary>
-public abstract class TextValueAttribute : Attribute
+/// <remarks>
+/// Initializes a new instance of the <see cref="TextValueAttribute"/> class.
+/// </remarks>
+/// <param name="text">The text value.</param>
+public abstract class TextValueAttribute(string text) : Attribute
 {
     /// <summary>
     /// Gets the text value.
     /// </summary>
-    public string Text { get; }
+    public string Text { get; } = text;
 
     /// <summary>
     /// Gets or sets the value whether the current value is the default one.
     /// </summary>
     public bool IsDefault { get; set; } = false;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="TextValueAttribute"/> class.
-    /// </summary>
-    /// <param name="text">The text value.</param>
-    public TextValueAttribute(string text)
-    {
-        this.Text = text;
-    } // ctor (string)
 
     /// <summary>
     /// Checks the current instance is valid or not.

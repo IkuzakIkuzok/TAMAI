@@ -12,7 +12,12 @@ namespace TAMAI.Spectra;
 /// <summary>
 /// Represents a spectrum at a specific time or in a specific time range.
 /// </summary>
-public class Spectrum :
+/// <remarks>
+/// Initializes a new instance of the <see cref="Spectrum"/> class.
+/// </remarks>
+/// <param name="wavelengths">The wavelength.</param>
+/// <param name="signals">The signal.</param>
+public class Spectrum(IEnumerable<Wavelength> wavelengths, IEnumerable<Signal> signals) :
     IEnumerable<WlSignal>, IAdditionOperators<Spectrum, Spectrum, Spectrum>,
     IMultiplyOperators<Spectrum, int, Spectrum>, IMultiplyOperators<Spectrum, float, Spectrum>, IMultiplyOperators<Spectrum, double, Spectrum>,
     IDivisionOperators<Spectrum, int, Spectrum>, IDivisionOperators<Spectrum, float, Spectrum>, IDivisionOperators<Spectrum, double, Spectrum>
@@ -20,12 +25,12 @@ public class Spectrum :
     /// <summary>
     /// Wavelengths associated with the current instance. This field is readonly.
     /// </summary>
-    protected readonly Wavelength[] wavelengths;
+    protected readonly Wavelength[] wavelengths = wavelengths.ToArray();
 
     /// <summary>
     /// Signals associated with the current instance. This field is readonly.
     /// </summary>
-    protected readonly Signal[] signals;
+    protected readonly Signal[] signals = signals.ToArray();
 
     /// <summary>
     /// Gets the list of wavelength associated with the current spectrum.
@@ -88,17 +93,6 @@ public class Spectrum :
     /// </summary>
     public Spectrum Absolute
         => new(this.wavelengths, this.signals.Select(s => s.Absolute));
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Spectrum"/> class.
-    /// </summary>
-    /// <param name="wavelengths">The wavelength.</param>
-    /// <param name="signals">The signal.</param>
-    public Spectrum(IEnumerable<Wavelength> wavelengths, IEnumerable<Signal> signals)
-    {
-        this.wavelengths = wavelengths.ToArray();
-        this.signals = signals.ToArray();
-    } // ctor (IEnumerable<Wavelength>, IEnumerable<Signal>)
 
     /// <summary>
     /// Saves the spectrum to a file.
