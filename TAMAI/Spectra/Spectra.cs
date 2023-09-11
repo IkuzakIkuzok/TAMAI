@@ -76,6 +76,7 @@ public class Spectra
             var first = this.time.FindNearestIndex(timeFrom, ValueSearchOption.EqualOrGreater);
             var last  = this.time.FindNearestIndex(timeUntil, ValueSearchOption.EqualOrLess);
 
+            if (last < first) last = first;
             if (first == last) return this.spectra[first];
 
             return this.spectra.Average(first, last);

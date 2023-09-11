@@ -68,6 +68,7 @@ public class Spectrum(IEnumerable<Wavelength> wavelengths, IEnumerable<Signal> s
             var first = this.wavelengths.FindNearestIndex(wlMin, ValueSearchOption.EqualOrGreater);
             var last = this.wavelengths.FindNearestIndex(wlMax, ValueSearchOption.EqualOrLess);
 
+            if (last < first) last = first;
             if (first == last) return this[wlMin];
 
             return this.signals.Average(first, last);
