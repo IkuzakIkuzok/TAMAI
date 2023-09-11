@@ -481,18 +481,23 @@ internal class MainForm : AutoResizeForm
 
     private void SetUsDefaultTimeRange()
     {
-        if (this.data == null) return;
+        if (this.data?.Spectra == null) return;
+
         this.TimeRangeSelectionTable.Unit = "us";
         this.TimeRangeSelectionTable.Bias = 0.00_000_1;
         this.TimeRangeSelectionTable.Rows.Clear();
         if (!this.data.AnalysisData.SpectraRange.Any())
         {
+            var t_max = this.data.Spectra.TimeMax;
+            var t1 = Time.Round(t_max * 0.05, 1);
+            var t2 = Time.Round(t_max * 0.10, 1);
+            var t3 = Time.Round(t_max * 0.50, 1);
+
             this.data.AnalysisData.SpectraRange.AddRange(new SerializableValueRange<Time>[]
             {
-                // TODO: determine appropriate default values from measured data
-                new(Time.FromDouble(1.0e-6), Time.FromDouble(1.2e-6)),
-                new(Time.FromDouble(2.0e-6), Time.FromDouble(2.5e-6)),
-                new(Time.FromDouble(3.0e-6), Time.FromDouble(5.0e-6)),
+                new(t1, t1 * 1.20),
+                new(t2, t2 * 1.25),
+                new(t3, t3 * 1.50),
             });
         }
 

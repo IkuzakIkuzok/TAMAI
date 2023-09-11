@@ -67,6 +67,16 @@ public readonly struct Time(double second) : IRatioScalePhysicalQuantity<Time>
         => time.Second;
 
     /// <inheritdoc/>
+    public static Time Round(Time t, int significance, Func<double, double>? round = null)
+    {
+        if (t.Second == 0) return new(0);
+
+        var scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(t.Second))) - significance + 1);
+        var value = (round ?? Math.Round)(t.Second / scale) * scale;
+        return new(value);
+    } // public static Time Round (Time, int, [Func<double, double>?])
+
+    /// <inheritdoc/>
     public static Time Abs(Time t)
         => new(Math.Abs(t.Second));
 

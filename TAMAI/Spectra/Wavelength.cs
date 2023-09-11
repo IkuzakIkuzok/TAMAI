@@ -60,6 +60,16 @@ public readonly struct Wavelength : IPhysicalQuantity<Wavelength>
         => new(value);
 
     /// <inheritdoc/>
+    public static Wavelength Round(Wavelength wl, int significance, Func<double, double>? round = null)
+    {
+        if (wl.Value == 0) return new(0);
+
+        var scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(wl.Value))) - significance + 1);
+        var value = (round ?? Math.Round)(wl.Value / scale) * scale;
+        return new(value);
+    } // Round (Wavelength, int, Func<double, double>?
+
+    /// <inheritdoc/>
     public int CompareTo(Wavelength other)
         => Math.Abs(this.Value - other.Value) < double.Epsilon * Math.Max(this.Value, other.Value) ? 0 : this.Value.CompareTo(other.Value);
 

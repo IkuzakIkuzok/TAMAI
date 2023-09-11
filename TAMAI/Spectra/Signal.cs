@@ -66,6 +66,16 @@ public readonly struct Signal(double od) : IRatioScalePhysicalQuantity<Signal>, 
         => this.OD.ToString(format, formatProvider);
 
     /// <inheritdoc/>
+    public static Signal Round(Signal s, int significance, Func<double, double>? round = null)
+    {
+        if (s.OD == 0) return new(0);
+
+        var scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(s.OD))) - significance + 1);
+        var value = (round ?? Math.Round)(s.OD / scale) * scale;
+        return new(value);
+    } // public static Signal Round (Signal, int, [Func<double, double>?])
+
+    /// <inheritdoc/>
     public static Signal Abs(Signal s)
         => new(Math.Abs(s.OD));
 
