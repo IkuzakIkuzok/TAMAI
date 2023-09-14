@@ -32,6 +32,7 @@ internal static class SpectraUtils
             Configuration = spectrumMapper,
             Values = spectra.GetSpectrum(range).ToChartSpectrum(),
             Fill = Brushes.Transparent,
+            LineSmoothness = 0,
         };
 
     internal static void Export(this Spectra spectra, TextWriter writer, IEnumerable<TimeRange> ranges)
