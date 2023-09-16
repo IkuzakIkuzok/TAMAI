@@ -510,24 +510,30 @@ internal class MainForm : AutoResizeForm
 
     private void DrawSpectra()
     {
-        try
+        var spectra = this.data?.Spectra;
+        if (spectra == null) return;
+
+        this.chart.Series.Clear();
+        this.data!.AnalysisData.SpectraRange.Clear();
+
+        var error = false;
+        foreach (var range in this.TimeRangeSelectionTable.Ranges)
         {
-            var spectra = this.data?.Spectra;
-            if (spectra == null) return;
-
-            this.chart.Series.Clear();
-            this.data!.AnalysisData.SpectraRange.Clear();
-
-            foreach (var range in this.TimeRangeSelectionTable.Ranges)
+            try
             {
                 this.data.AnalysisData.SpectraRange.Add(new(range.Start, range.End));
                 var series = spectra.GetLineSeries(range);
                 this.chart.Series.Add(series);
             }
+            catch (Exception e)
+            {
+                e.MakeCrashReport();
+                error = true;
+            }
         }
-        catch (Exception e)
+
+        if (error)
         {
-            e.MakeCrashReport();
             MessageBox.Show(
                 Resources.MessageErrorDrawingSpectra,
                 Resources.ProductName,
