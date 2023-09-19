@@ -517,12 +517,15 @@ internal class MainForm : AutoResizeForm
         this.data!.AnalysisData.SpectraRange.Clear();
 
         var error = false;
-        foreach (var range in this.TimeRangeSelectionTable.Ranges)
+        var ranges = this.TimeRangeSelectionTable.Ranges.ToList();
+        var gradient = new ColorGradient(Color.Red, Color.Blue, ranges.Count);
+        foreach ((var i, var range) in ranges.Enumerate())
         {
             try
             {
                 this.data.AnalysisData.SpectraRange.Add(new(range.Start, range.End));
                 var series = spectra.GetLineSeries(range);
+                series.Stroke = gradient[i];
                 this.chart.Series.Add(series);
             }
             catch (Exception e)
