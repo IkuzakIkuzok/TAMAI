@@ -79,12 +79,15 @@ internal class ColorGradient
         this.colors[0] = this.startColor;
         this.colors[^1] = this.endColor;
         var gamma = 1 / this.gamma;
+        var rDiff = this.endColor.R - this.startColor.R;
+        var gDiff = this.endColor.G - this.startColor.G;
+        var bDiff = this.endColor.B - this.startColor.B;
         for (var i = 1; i < this.Width - 1; i++)
         {
-            var coeff = i / (this.Width - 1f);
-            var r = (int)(this.startColor.R + (this.endColor.R - this.startColor.R) * coeff);
-            var g = (int)(this.startColor.G + (this.endColor.G - this.startColor.G) * coeff);
-            var b = (int)(this.startColor.B + (this.endColor.B - this.startColor.B) * coeff);
+            var coeff = (float)i / this.Width;
+            var r = (int)(this.startColor.R + rDiff * coeff);
+            var g = (int)(this.startColor.G + gDiff * coeff);
+            var b = (int)(this.startColor.B + bDiff * coeff);
             if (this.gammaCorrection)
             {
                 r = (int)(Math.Pow(r / 255f, gamma) * 255);
