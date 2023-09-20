@@ -97,6 +97,24 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Analysis.
+        /// </summary>
+        internal static string MenuAnalysis {
+            get {
+                return ResourceManager.GetString("MenuAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Time evolution.
+        /// </summary>
+        internal static string MenuAnalysisTimeEvolution {
+            get {
+                return ResourceManager.GetString("MenuAnalysisTimeEvolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;File.
         /// </summary>
         internal static string MenuFile {
@@ -295,11 +313,29 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        internal static string TableHeaderFittingArgs {
+            get {
+                return ResourceManager.GetString("TableHeaderFittingArgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
         internal static string TableHeaderFrom {
             get {
                 return ResourceManager.GetString("TableHeaderFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Function.
+        /// </summary>
+        internal static string TableHeaderFunc {
+            get {
+                return ResourceManager.GetString("TableHeaderFunc", resourceCulture);
             }
         }
         
@@ -313,11 +349,47 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time constant.
+        /// </summary>
+        internal static string TableHeaderTimeConstant {
+            get {
+                return ResourceManager.GetString("TableHeaderTimeConstant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To.
         /// </summary>
         internal static string TableHeaderTo {
             get {
                 return ResourceManager.GetString("TableHeaderTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abs(Y).
+        /// </summary>
+        internal static string TextAbsSignal {
+            get {
+                return ResourceManager.GetString("TextAbsSignal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to log(X).
+        /// </summary>
+        internal static string TextSemilogX {
+            get {
+                return ResourceManager.GetString("TextSemilogX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to log(Y).
+        /// </summary>
+        internal static string TextSemilogY {
+            get {
+                return ResourceManager.GetString("TextSemilogY", resourceCulture);
             }
         }
         
@@ -363,6 +435,15 @@ namespace TAMAI.Win.Properties {
         internal static string TitleSaveUsTas {
             get {
                 return ResourceManager.GetString("TitleSaveUsTas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time evolution.
+        /// </summary>
+        internal static string TitleTimeEvolution {
+            get {
+                return ResourceManager.GetString("TitleTimeEvolution", resourceCulture);
             }
         }
         

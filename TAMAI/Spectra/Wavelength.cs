@@ -9,30 +9,19 @@ namespace TAMAI.Spectra;
 /// Represents a wavelength, in nm.
 /// </summary>
 [PhysicalQuantity(nameof(Value), "nm", AcceptSIPrefix = false, DefaultValue = 532)]
-public readonly struct Wavelength : IPhysicalQuantity<Wavelength>
+public readonly struct Wavelength(double value) : IPhysicalQuantity<Wavelength>
 {
     private const double WLtoEnergy = 1239.841984;
 
     /// <summary>
     /// Gets the wavelengths value, in nm.
     /// </summary>
-    public double Value { get; }
+    public double Value { get; } = value;
 
     /// <summary>
     /// Gets the photon energy corresponding to the wavelengths.
     /// </summary>
     public double Energy => WLtoEnergy / this.Value;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Wavelength"/> structure.
-    /// </summary>
-    /// <param name="value">The wavelengths value, in nm.</param>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="value"/> is less than or equal to zero.</exception>
-    public Wavelength(double value)
-    {
-        if (value <= 0) throw new ArgumentOutOfRangeException(nameof(value));
-        this.Value = value;
-    } // ctor (double)
 
     /// <inheritdoc/>
     public static Wavelength FromDouble(double wl) => new(wl);

@@ -129,6 +129,12 @@
   <data name="FilterSaveUsTas" xml:space="preserve">
     <value>usTAS data files|*.ustas|All files|*.*</value>
   </data>
+  <data name="MenuAnalysis" xml:space="preserve">
+    <value>&amp;Analysis</value>
+  </data>
+  <data name="MenuAnalysisTimeEvolution" xml:space="preserve">
+    <value>&amp;Time evolution</value>
+  </data>
   <data name="MenuFile" xml:space="preserve">
     <value>&amp;File</value>
   </data>
@@ -195,14 +201,32 @@
   <data name="ProductName" xml:space="preserve">
     <value>TAMAI for Win</value>
   </data>
+  <data name="TableHeaderFittingArgs" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="TableHeaderFrom" xml:space="preserve">
     <value>From</value>
+  </data>
+  <data name="TableHeaderFunc" xml:space="preserve">
+    <value>Function</value>
   </data>
   <data name="TableHeaderShow" xml:space="preserve">
     <value>Show</value>
   </data>
+  <data name="TableHeaderTimeConstant" xml:space="preserve">
+    <value>Time constant</value>
+  </data>
   <data name="TableHeaderTo" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="TextAbsSignal" xml:space="preserve">
+    <value>Abs(Y)</value>
+  </data>
+  <data name="TextSemilogX" xml:space="preserve">
+    <value>log(X)</value>
+  </data>
+  <data name="TextSemilogY" xml:space="preserve">
+    <value>log(Y)</value>
   </data>
   <data name="TitleExportSpectra" xml:space="preserve">
     <value>Export spectra</value>
@@ -218,6 +242,9 @@
   </data>
   <data name="TitleSaveUsTas" xml:space="preserve">
     <value>Save usTAS data</value>
+  </data>
+  <data name="TitleTimeEvolution" xml:space="preserve">
+    <value>Time evolution</value>
   </data>
   <data name="ToastOpenDir" xml:space="preserve">
     <value>Open folder</value>

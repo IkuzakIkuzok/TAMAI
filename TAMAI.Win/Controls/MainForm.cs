@@ -32,7 +32,10 @@ internal class MainForm : AutoResizeForm
     [ResizeMode(ResizeType.AdjustLeft | ResizeType.AdjustHeight)]
     private readonly TextBox tb_comment;
 
-    private readonly ToolStripMenuItem menu_save, menu_saveAs, menu_exportSpectra;
+    private readonly ToolStripMenuItem
+        menu_save, menu_saveAs,
+        menu_kinetics,
+        menu_exportSpectra;
 
     private string? SampleName => this.data?.Metadata.SampleName;
 
@@ -170,6 +173,24 @@ internal class MainForm : AutoResizeForm
         file.DropDownItems.Add(exit);
 
         #endregion menu.file
+
+        #region menu.analysis
+
+        var analysis = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuAnalysis,
+        };
+        ms.Items.Add(analysis);
+
+        this.menu_kinetics = new()
+        {
+            Text = Resources.MenuAnalysisTimeEvolution,
+            Enabled = false,
+        };
+        this.menu_kinetics.Click += ShowKineticsForm;
+        analysis.DropDownItems.Add(this.menu_kinetics);
+
+        #endregion menu.analysis
 
         #region menu.tool
 
@@ -431,6 +452,19 @@ internal class MainForm : AutoResizeForm
 
     #endregion save
 
+    #region analysis
+
+    private void ShowKineticsForm(object? sender, EventArgs e)
+        => ShowKineticsForm();
+
+    private void ShowKineticsForm()
+    {
+        if (this.data == null) return;
+        new KineticsForm(this.data).Show();
+    } // private void ShowKineticsForm ()
+
+    #endregion analysis
+
     private void ExportSpectra(object? sender, EventArgs e)
         => ExportSpectra();
 
@@ -476,7 +510,9 @@ internal class MainForm : AutoResizeForm
         if (this.data == null) return;
 
         this.tb_sampleName.Enabled = this.tb_comment.Enabled = true;
-        this.menu_save.Enabled = this.menu_saveAs.Enabled = this.menu_exportSpectra.Enabled = true;
+        this.menu_save.Enabled = this.menu_saveAs.Enabled =
+        this.menu_kinetics.Enabled =
+        this.menu_exportSpectra.Enabled = true;
     } // private void SetDataManipulationEnabled ()
 
     private void SetUsDefaultTimeRange()
