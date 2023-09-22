@@ -174,6 +174,29 @@ internal class MainForm : AutoResizeForm
 
         #endregion menu.file
 
+        #region menu.view
+
+        var view = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuView,
+        };
+        ms.Items.Add(view);
+
+        var color = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuViewColor,
+        };
+        view.DropDownItems.Add(color);
+
+        var gradient = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuViewColorGradient,
+        };
+        gradient.Click += SelectColorGradient;
+        color.DropDownItems.Add(gradient);
+
+        #endregion menu.view
+
         #region menu.analysis
 
         var analysis = new ToolStripMenuItem()
@@ -452,6 +475,20 @@ internal class MainForm : AutoResizeForm
 
     #endregion save
 
+    #region view
+
+    private void SelectColorGradient(object? sender, EventArgs e)
+    {
+        var picker = new ColorGradientPicker(Program.GradientStart, Program.GradientEnd)
+        {
+            StartPosition = FormStartPosition.CenterParent,
+        };
+        (Program.GradientStart, Program.GradientEnd) = picker.ShowDialog();
+        DrawSpectra();
+    } // private void SelectColorGradient (object?, EventArgs)
+
+    #endregion view
+
     #region analysis
 
     private void ShowKineticsForm(object? sender, EventArgs e)
@@ -554,7 +591,7 @@ internal class MainForm : AutoResizeForm
 
         var error = false;
         var ranges = this.TimeRangeSelectionTable.Ranges.ToList();
-        var gradient = new ColorGradient(Color.Red, Color.Blue, ranges.Count);
+        var gradient = new ColorGradient(Program.GradientStart, Program.GradientEnd, ranges.Count);
         foreach ((var i, var range) in ranges.Enumerate())
         {
             try

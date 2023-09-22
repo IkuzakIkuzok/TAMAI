@@ -10,7 +10,6 @@ using TAMAI.Spectra;
 using TAMAI.Win.Analysis;
 using TAMAI.Win.Properties;
 using TAMAI.Win.Utils;
-using DColor = System.Drawing.Color;
 using WMBrushes = System.Windows.Media.Brushes;
 
 namespace TAMAI.Win.Controls;
@@ -153,7 +152,7 @@ internal sealed class KineticsForm : AutoResizeForm
                     .SkipLast(1)
                     .ToList();
 
-                var gradient = new ColorGradient(DColor.Red, DColor.Blue, rows.Count);
+                var gradient = new ColorGradient(Program.GradientStart, Program.GradientEnd, rows.Count);
                 var fittedList = new List<LineSeries>();
                 foreach ((var i, var row) in rows.Enumerate())
                 {

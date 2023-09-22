@@ -1,6 +1,8 @@
 ﻿
 // (c) 2023 Kazuki KOHZUKI
 
+using System.Drawing.Drawing2D;
+using SCBrush = System.Windows.Media.SolidColorBrush;
 using WMBrush = System.Windows.Media.Brush;
 using WMColor = System.Windows.Media.Color;
 
@@ -98,6 +100,24 @@ internal class ColorGradient
         }
     } // protected virtual void SetColors ()
 
+    protected virtual Brush GetBrush(RectangleF rect, LinearGradientMode gradientMode)
+        => new LinearGradientBrush(rect, this.startColor, this.endColor, gradientMode)
+        {
+            GammaCorrection = true,
+        };
+
+    internal void FillRectangle(Control control, LinearGradientMode gradientMode)
+    {
+        // TODO: remove old event handler
+        var handler = new PaintEventHandler((object? sender, PaintEventArgs e) =>
+        {
+            var rect = new RectangleF(0, 0, control.Width, control.Height);
+            e.Graphics.FillRectangle(GetBrush(rect, gradientMode), rect);
+        });
+        control.Paint += handler;
+        control.Refresh();
+    } // internal void FillRectangle (Control, LinearGradientMode)
+
     internal class ColorWrapper
     {
         private readonly Color color;
@@ -109,6 +129,6 @@ internal class ColorGradient
 
         public static implicit operator Color(ColorWrapper wrapper) => wrapper.color;
 
-        public static implicit operator WMBrush(ColorWrapper wrapper) => new System.Windows.Media.SolidColorBrush(WMColor.FromArgb(wrapper.color.A, wrapper.color.R, wrapper.color.G, wrapper.color.B));
+        public static implicit operator WMBrush(ColorWrapper wrapper) => new SCBrush(WMColor.FromArgb(wrapper.color.A, wrapper.color.R, wrapper.color.G, wrapper.color.B));
     } // internal class ColorWrapper
 } // internal class ColorGradient

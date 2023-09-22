@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="FilterExportSpectra" xml:space="preserve">
     <value>CSV files|*.csv|All files|*.*</value>
   </data>
@@ -165,6 +168,15 @@
   <data name="MenuToolRegExts" xml:space="preserve">
     <value>Associate TAS file with TAMAI for Win</value>
   </data>
+  <data name="MenuView" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
+  <data name="MenuViewColor" xml:space="preserve">
+    <value>&amp;Color</value>
+  </data>
+  <data name="MenuViewColorGradient" xml:space="preserve">
+    <value>&amp;Gradient</value>
+  </data>
   <data name="MessageErrorDrawingSpectra" xml:space="preserve">
     <value>An error occurred while drawing spectra.</value>
   </data>
@@ -191,6 +203,9 @@
   </data>
   <data name="MessageSpectraSaved" xml:space="preserve">
     <value>The spectra have been successfully saved.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="PlaceholderSampleComment" xml:space="preserve">
     <value>Comment</value>
@@ -227,6 +242,9 @@
   </data>
   <data name="TextSemilogY" xml:space="preserve">
     <value>log(Y)</value>
+  </data>
+  <data name="TitleColorGradient" xml:space="preserve">
+    <value>Color gradient</value>
   </data>
   <data name="TitleExportSpectra" xml:space="preserve">
     <value>Export spectra</value>

@@ -15,6 +15,12 @@ internal static class Program
 {
     private static string? crushReportLocation;
 
+    // TODO: save and restore app configuration.
+
+    internal static Color GradientStart { get; set; } = Color.Red;
+
+    internal static Color GradientEnd { get; set; } = Color.Blue;
+
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>

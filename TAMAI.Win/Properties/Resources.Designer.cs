@@ -61,6 +61,15 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CSV files|*.csv|All files|*.*.
         /// </summary>
         internal static string FilterExportSpectra {
@@ -205,6 +214,33 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;View.
+        /// </summary>
+        internal static string MenuView {
+            get {
+                return ResourceManager.GetString("MenuView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Color.
+        /// </summary>
+        internal static string MenuViewColor {
+            get {
+                return ResourceManager.GetString("MenuViewColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Gradient.
+        /// </summary>
+        internal static string MenuViewColorGradient {
+            get {
+                return ResourceManager.GetString("MenuViewColorGradient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred while drawing spectra..
         /// </summary>
         internal static string MessageErrorDrawingSpectra {
@@ -282,6 +318,15 @@ namespace TAMAI.Win.Properties {
         internal static string MessageSpectraSaved {
             get {
                 return ResourceManager.GetString("MessageSpectraSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
             }
         }
         
@@ -390,6 +435,15 @@ namespace TAMAI.Win.Properties {
         internal static string TextSemilogY {
             get {
                 return ResourceManager.GetString("TextSemilogY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color gradient.
+        /// </summary>
+        internal static string TitleColorGradient {
+            get {
+                return ResourceManager.GetString("TitleColorGradient", resourceCulture);
             }
         }
         
