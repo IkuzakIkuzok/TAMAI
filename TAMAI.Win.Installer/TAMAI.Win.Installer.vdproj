@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_D119E751710441BDB2CA6A0D681C6031"
+        "MsmKey" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -44,6 +44,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -106,6 +114,52 @@
         }
         "FileType"
         {
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_2ADD9491B73640E9B392D10A91D4F1AB"
+            {
+            "Name" = "8:usTAS"
+            "Description" = "8:Microsecond TAS data"
+            "Extensions" = "8:ustas"
+            "MIME" = "8:"
+            "Icon" = "8:"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_B8691B3D514B4774B2AA1CDB110AC207"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_92F9E788F97D40CBAE5E01F446CB3DB8"
+            {
+            "Name" = "8:fsTAS"
+            "Description" = "8:Femtosecond TAS data"
+            "Extensions" = "8:fstas"
+            "MIME" = "8:"
+            "Icon" = "8:"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_6744BA7B4DBB4B6A9774F154BECFD9F6"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:\"%1\""
+                    "Order" = "3:0"
+                    }
+                }
+            }
         }
         "Folder"
         {
@@ -280,7 +334,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7372C95D60A44E1EBF40156C9FBBEBE8"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0C55B3F390BD46B4BB334B3BE431F5A5"
             {
             "Name" = "8:TAMAI for Win"
             "Arguments" = "8:"
@@ -288,21 +342,21 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_D119E751710441BDB2CA6A0D681C6031"
+            "Target" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
             "Folder" = "8:_0609C8E0808C43A9AC0DDB3E50A40758"
             "WorkingFolder" = "8:_34CF1D36C64846098F443790E34A6362"
             "Icon" = "8:"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B12D4169BED04727A428423F522876E0"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_21B38EF782F7494199A9E296549CD4D4"
             {
-            "Name" = "8:TAMAI fow Win"
+            "Name" = "8:TAMAI for Win"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_D119E751710441BDB2CA6A0D681C6031"
+            "Target" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
             "Folder" = "8:_426799F4D98741B4B5A4B212AF715188"
             "WorkingFolder" = "8:_34CF1D36C64846098F443790E34A6362"
             "Icon" = "8:"
@@ -707,9 +761,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D119E751710441BDB2CA6A0D681C6031"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_98D8F226B08B4ED5880F36162F1BEB1E"
             {
-            "SourcePath" = "8:..\\TAMAI.Win\\obj\\Release\\net7.0-windows10.0.17763.0\\win-x64\\apphost.exe"
+            "SourcePath" = "8:..\\TAMAI.Win\\obj\\Release\\net7.0-windows10.0.17763.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_34CF1D36C64846098F443790E34A6362"
@@ -727,11 +781,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{07720CCC-F9F3-436C-9472-74A67156091C}"
             "ShowKeyOutput" = "11:TRUE"
-            "PublishProfilePath" = "8:Properties\\PublishProfiles\\FolderProfile.pubxml"
                 "ExcludeFilters"
                 {
                 }
