@@ -22,7 +22,13 @@
     <Version>0.0.1-alpha</Version>
     
     <Company>Ohkita Lab</Company>
+    
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="LiveCharts" Version="0.9.7" />

@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using TAMAI.Data;
 using TAMAI.Win.Controls;
@@ -45,6 +46,8 @@ internal static class Program
             if (!string.IsNullOrEmpty(s = usTasConfig["suffix-a-b-tdm"])) MicroSecondTasData.SmoothedSignalSuffix = s;
             if (!string.IsNullOrEmpty(s = usTasConfig["suffix-wavelength"])) MicroSecondTasData.WavelengthSuffix = s;
         }
+
+        typeof(Form).GetField("defaultIcon", BindingFlags.NonPublic | BindingFlags.Static)?.SetValue(null, Properties.Resources.Icon);
 
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.

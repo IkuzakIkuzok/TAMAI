@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_3B51163A5B5544E092CB136051DD81CB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -111,6 +117,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B51163A5B5544E092CB136051DD81CB"
+            {
+            "SourcePath" = "8:..\\Icon\\Icon.ico"
+            "TargetName" = "8:Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_34CF1D36C64846098F443790E34A6362"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -120,7 +146,7 @@
             "Description" = "8:Microsecond TAS data"
             "Extensions" = "8:ustas"
             "MIME" = "8:"
-            "Icon" = "8:"
+            "Icon" = "8:_3B51163A5B5544E092CB136051DD81CB"
             "IconIndex" = "3:0"
                 "Command"
                 {
@@ -143,7 +169,7 @@
             "Description" = "8:Femtosecond TAS data"
             "Extensions" = "8:fstas"
             "MIME" = "8:"
-            "Icon" = "8:"
+            "Icon" = "8:_3B51163A5B5544E092CB136051DD81CB"
             "IconIndex" = "3:0"
                 "Command"
                 {
@@ -214,7 +240,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TAMAI for Win"
         "ProductCode" = "8:{AC725FEC-DC9D-44E7-8CDD-EA82F7BF2BF8}"
-        "PackageCode" = "8:{D7A456BD-D631-4832-A780-F0DFB845E665}"
+        "PackageCode" = "8:{920F700B-703D-40D0-B0C8-42A5A2767A50}"
         "UpgradeCode" = "8:{5FFDE540-C136-4406-B832-C4074CC97990}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -345,7 +371,7 @@
             "Target" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
             "Folder" = "8:_0609C8E0808C43A9AC0DDB3E50A40758"
             "WorkingFolder" = "8:_34CF1D36C64846098F443790E34A6362"
-            "Icon" = "8:"
+            "Icon" = "8:_3B51163A5B5544E092CB136051DD81CB"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_21B38EF782F7494199A9E296549CD4D4"
@@ -359,7 +385,7 @@
             "Target" = "8:_98D8F226B08B4ED5880F36162F1BEB1E"
             "Folder" = "8:_426799F4D98741B4B5A4B212AF715188"
             "WorkingFolder" = "8:_34CF1D36C64846098F443790E34A6362"
-            "Icon" = "8:"
+            "Icon" = "8:_3B51163A5B5544E092CB136051DD81CB"
             "Feature" = "8:"
             }
         }
