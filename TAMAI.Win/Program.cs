@@ -8,19 +8,41 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using TAMAI.Data;
+using TAMAI.Win.Config;
 using TAMAI.Win.Controls;
 
 namespace TAMAI.Win;
 
 internal static class Program
 {
+    internal static readonly string AppDataPath = Path.Combine(
+               Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+               "TAMAI"
+           );
+
     private static string? crushReportLocation;
 
-    // TODO: save and restore app configuration.
+    internal static AppConfig Config { get; } = AppConfig.Load();
 
-    internal static Color GradientStart { get; set; } = Color.Red;
+    internal static Color GradientStart
+    {
+        get => Config.AppearanceConfig.ColorGradientConfig.StartColor.Color;
+        set
+        {
+            Config.AppearanceConfig.ColorGradientConfig.StartColor.Color = value;
+            Config.Save();
+        }
+    }
 
-    internal static Color GradientEnd { get; set; } = Color.Blue;
+    internal static Color GradientEnd
+    {
+        get => Config.AppearanceConfig.ColorGradientConfig.EndColor.Color;
+        set
+        {
+            Config.AppearanceConfig.ColorGradientConfig.EndColor.Color = value;
+            Config.Save();
+        }
+    }
 
     /// <summary>
     ///  The main entry point for the application.
