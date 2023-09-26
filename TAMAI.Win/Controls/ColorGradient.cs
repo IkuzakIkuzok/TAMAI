@@ -10,6 +10,8 @@ namespace TAMAI.Win.Controls;
 
 internal class ColorGradient
 {
+    private static readonly Dictionary<nint, PaintEventHandler> paintHandlers = new();
+
     protected Color startColor, endColor;
     protected bool gammaCorrection = true;
     protected float gamma = 2.2f;
@@ -108,13 +110,19 @@ internal class ColorGradient
 
     internal void FillRectangle(Control control, LinearGradientMode gradientMode)
     {
-        // TODO: remove old event handler
+        if (paintHandlers.TryGetValue(control.Handle, out var oldHandler))
+        {
+            control.Paint -= oldHandler;
+            paintHandlers.Remove(control.Handle);
+        }
+
         var handler = new PaintEventHandler((object? sender, PaintEventArgs e) =>
         {
             var rect = new RectangleF(0, 0, control.Width, control.Height);
             e.Graphics.FillRectangle(GetBrush(rect, gradientMode), rect);
         });
         control.Paint += handler;
+        paintHandlers.Add(control.Handle, handler);
         control.Refresh();
     } // internal void FillRectangle (Control, LinearGradientMode)
 
