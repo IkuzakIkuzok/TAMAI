@@ -164,7 +164,7 @@
     <value>&amp;Save as</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>&amp;H</value>
+    <value>&amp;Help</value>
   </data>
   <data name="MenuHelpGitHub" xml:space="preserve">
     <value>Show &amp;GitHub repository</value>
@@ -177,9 +177,6 @@
   </data>
   <data name="MenuToolExportSpectra" xml:space="preserve">
     <value>Export &amp;Spectra</value>
-  </data>
-  <data name="MenuToolRegExts" xml:space="preserve">
-    <value>Associate TAS file with TAMAI for Win</value>
   </data>
   <data name="MenuView" xml:space="preserve">
     <value>&amp;View</value>

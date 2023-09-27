@@ -197,7 +197,7 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;H.
+        ///   Looks up a localized string similar to &amp;Help.
         /// </summary>
         internal static string MenuHelp {
             get {
@@ -238,15 +238,6 @@ namespace TAMAI.Win.Properties {
         internal static string MenuToolExportSpectra {
             get {
                 return ResourceManager.GetString("MenuToolExportSpectra", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Associate TAS file with TAMAI for Win.
-        /// </summary>
-        internal static string MenuToolRegExts {
-            get {
-                return ResourceManager.GetString("MenuToolRegExts", resourceCulture);
             }
         }
         

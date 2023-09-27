@@ -174,9 +174,6 @@
   <data name="MenuToolExportSpectra" xml:space="preserve">
     <value>スペクトルをエクスポート (&amp;S)</value>
   </data>
-  <data name="MenuToolRegExts" xml:space="preserve">
-    <value>TASファイルをTAMAI for Winに関連付ける</value>
-  </data>
   <data name="MenuView" xml:space="preserve">
     <value>表示 (&amp;V)</value>
   </data>
