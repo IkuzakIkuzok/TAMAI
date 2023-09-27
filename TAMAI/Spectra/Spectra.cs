@@ -38,7 +38,7 @@ public class Spectra
     /// <summary>
     /// Gets the maximum time value.
     /// </summary>
-    public Time TimeMax => this.time[this.TimeCount - 1];
+    public Time TimeMax => this.time[^1];
 
     /// <summary>
     /// Gets the minimum wavelength value.
@@ -48,7 +48,7 @@ public class Spectra
     /// <summary>
     /// Gets the maximum wavelength value.
     /// </summary>
-    public Wavelength WavelengthMax => this.spectra[0].Wavelengths[this.WavelengthCount - 1];
+    public Wavelength WavelengthMax => this.spectra[0].Wavelengths[^1];
 
     /// <summary>
     /// Gets a spectrum at the specified time.
