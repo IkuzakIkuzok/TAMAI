@@ -176,7 +176,7 @@ internal sealed class KineticsForm : AutoResizeForm
                     var timeConstant = new ScientificValue<Time>(new Time(func.TimeConstant)).Text;
                     var fittedSeries = (X, fitted).GetLineSeries(timeConstant, this.data.Metadata.TasType, this.XMapper, this.YMapper);
                     fittedSeries.Stroke = color;
-                    fittedSeries.StrokeDashArray = new DoubleCollection { 2 };
+                    fittedSeries.StrokeDashArray = [2];
                     fittedList.Add(fittedSeries);
                     row.TimeConstant = timeConstant;
                 }

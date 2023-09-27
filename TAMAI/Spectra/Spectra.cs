@@ -152,6 +152,6 @@ public class Spectra
             var time = new ScientificValue<Time>(Path.GetFileNameWithoutExtension(file)).Value;
             data.Add(time, Spectrum.Load(file));
         }
-        return new(data.Keys.ToArray(), data.Values.ToArray());
+        return new([.. data.Keys], [.. data.Values]);
     } // public static Spectra Load (string)
 } // public class Spectra

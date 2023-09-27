@@ -13,9 +13,9 @@ namespace TAMAI;
 [Serializable]
 public sealed class ScientificValue<T> where T : IPhysicalQuantity<T>
 {
-    private static readonly char[] PREFIX = new[] {
+    private static readonly char[] PREFIX = [
         'Q', 'R', 'Y', 'Z', 'E', 'P', 'T', 'G', 'M', 'k', '\0', 'm', 'u', 'n', 'p', 'f', 'a', 'z', 'y', 'r', 'q'
-    };
+    ];
     private const int CENTER = 10;
 
     static ScientificValue()
@@ -59,7 +59,7 @@ public sealed class ScientificValue<T> where T : IPhysicalQuantity<T>
     public double ValueAsDouble => GetValue(this.Value);
 
     /// <summary>
-    /// Gets or sets the string representation of a scientific value accosiated with the current instance.
+    /// Gets or sets the string representation of a scientific value associated with the current instance.
     /// </summary>
     [XmlText]
     public string Text
