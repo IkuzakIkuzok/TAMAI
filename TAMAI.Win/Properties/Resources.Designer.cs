@@ -197,6 +197,33 @@ namespace TAMAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;H.
+        /// </summary>
+        internal static string MenuHelp {
+            get {
+                return ResourceManager.GetString("MenuHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show &amp;GitHub repository.
+        /// </summary>
+        internal static string MenuHelpGitHub {
+            get {
+                return ResourceManager.GetString("MenuHelpGitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show &amp;version info.
+        /// </summary>
+        internal static string MenuHelpVersion {
+            get {
+                return ResourceManager.GetString("MenuHelpVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Tool.
         /// </summary>
         internal static string MenuTool {
@@ -508,6 +535,15 @@ namespace TAMAI.Win.Properties {
         internal static string TitleTimeEvolution {
             get {
                 return ResourceManager.GetString("TitleTimeEvolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version information.
+        /// </summary>
+        internal static string TitleVersionInfo {
+            get {
+                return ResourceManager.GetString("TitleVersionInfo", resourceCulture);
             }
         }
         

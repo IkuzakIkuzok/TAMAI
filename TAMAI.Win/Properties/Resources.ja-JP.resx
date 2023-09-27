@@ -159,6 +159,15 @@
   <data name="MenuFileSaveAs" xml:space="preserve">
     <value>名前を付けて保存</value>
   </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>ヘルプ (&amp;H)</value>
+  </data>
+  <data name="MenuHelpGitHub" xml:space="preserve">
+    <value>GitHubリポジトリを表示する (&amp;G)</value>
+  </data>
+  <data name="MenuHelpVersion" xml:space="preserve">
+    <value>バージョン情報を表示する (&amp;V)</value>
+  </data>
   <data name="MenuTool" xml:space="preserve">
     <value>ツール (&amp;T)</value>
   </data>
@@ -257,6 +266,9 @@
   </data>
   <data name="TitleTimeEvolution" xml:space="preserve">
     <value>時間発展</value>
+  </data>
+  <data name="TitleVersionInfo" xml:space="preserve">
+    <value>バージョン情報</value>
   </data>
   <data name="ToastOpenDir" xml:space="preserve">
     <value>フォルダを開く</value>

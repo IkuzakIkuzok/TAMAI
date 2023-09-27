@@ -233,6 +233,30 @@ internal class MainForm : AutoResizeForm
 
         #endregion menu.tool
 
+        #region menu.help
+
+        var help = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuHelp,
+        };
+        ms.Items.Add(help);
+
+        var version = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuHelpVersion,
+        };
+        version.Click += ShowVersionInfo;
+        help.DropDownItems.Add(version);
+
+        var github = new ToolStripMenuItem()
+        {
+            Text = Resources.MenuHelpGitHub,
+        };
+        github.Click += ShowGitHubRepository;
+        help.DropDownItems.Add(github);
+
+        #endregion menu.help
+
         #endregion menu
     } // ctor ()
 
@@ -501,6 +525,16 @@ internal class MainForm : AutoResizeForm
     } // private void ShowKineticsForm ()
 
     #endregion analysis
+
+    #region help
+
+    private static void ShowVersionInfo(object? sender, EventArgs e)
+        => new VersionInfoDialog().Show();
+
+    private static void ShowGitHubRepository(object? sender, EventArgs e)
+        => OpenFileUtils.OpenUrl(@"https://github.com/IkuzakIkuzok/TAMAI");
+
+    #endregion help
 
     private void ExportSpectra(object? sender, EventArgs e)
         => ExportSpectra();

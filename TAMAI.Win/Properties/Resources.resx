@@ -163,6 +163,15 @@
   <data name="MenuFileSaveAs" xml:space="preserve">
     <value>&amp;Save as</value>
   </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;H</value>
+  </data>
+  <data name="MenuHelpGitHub" xml:space="preserve">
+    <value>Show &amp;GitHub repository</value>
+  </data>
+  <data name="MenuHelpVersion" xml:space="preserve">
+    <value>Show &amp;version info</value>
+  </data>
   <data name="MenuTool" xml:space="preserve">
     <value>&amp;Tool</value>
   </data>
@@ -267,6 +276,9 @@
   </data>
   <data name="TitleTimeEvolution" xml:space="preserve">
     <value>Time evolution</value>
+  </data>
+  <data name="TitleVersionInfo" xml:space="preserve">
+    <value>Version information</value>
   </data>
   <data name="ToastOpenDir" xml:space="preserve">
     <value>Open folder</value>
