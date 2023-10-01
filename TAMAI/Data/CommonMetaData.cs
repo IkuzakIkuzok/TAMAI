@@ -16,7 +16,7 @@ public sealed class CommonMetaData
     private const string FILENAME = "metadata.xml";
 
     /// <summary>
-    /// Getsor sets the TAS measurement type.
+    /// Gets or sets the TAS measurement type.
     /// </summary>
     [XmlElement("type")]
     public SerializableEnum<TasTypes> TasType { get; set; } = TasTypes.NotSpecified;

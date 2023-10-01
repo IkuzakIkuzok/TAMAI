@@ -37,7 +37,7 @@ public static class TextValueManager
     } // public static string ToString<T> (this Enum) where T : TextValueAttribute 
 
     /// <summary>
-    /// Gets an enum elememt whose string representation is equal to the specified one.
+    /// Gets an enum element whose string representation is equal to the specified one.
     /// </summary>
     /// <typeparam name="TEnum">A type of the enum.</typeparam>
     /// <typeparam name="TAttr">The attribute that specifies the representation.</typeparam>

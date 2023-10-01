@@ -25,12 +25,12 @@ public class SerializableEnum<T> where T : Enum
     }
 
     /// <summary>
-    /// Initializes a new instanece of the <see cref="SerializableEnum{T}"/> class.
+    /// Initializes a new instance of the <see cref="SerializableEnum{T}"/> class.
     /// </summary>
     public SerializableEnum() { }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SerializableEnum{T}"/> class with the inital value.
+    /// Initializes a new instance of the <see cref="SerializableEnum{T}"/> class with the initial value.
     /// </summary>
     /// <param name="value">The initial value.</param>
     public SerializableEnum(T value)

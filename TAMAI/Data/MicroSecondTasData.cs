@@ -58,7 +58,7 @@ public sealed class MicroSecondTasData : TasData
     /// </summary>
     /// <remarks>
     /// It is possible to customize how t0 is determined by setting this property.
-    /// The list of raw data directories is passed to the functoin.
+    /// The list of raw data directories is passed to the function.
     /// By default, t0 is determined as the peak position of the B signal, with statistical outlier exclusion.
     /// </remarks>
     public Func<IEnumerable<RawDataDirectory>, Time>? DetermineT0 { get; set; } = null;
@@ -91,7 +91,7 @@ public sealed class MicroSecondTasData : TasData
     /// <summary>
     /// Asynchronously loads usTAS data.
     /// </summary>
-    /// <param name="path">The path at which the raw data is loadted.</param>
+    /// <param name="path">The path at which the raw data is loaded.</param>
     /// <returns>A task that represents the asynchronous load operation,
     /// which wraps the usTAS data.</returns>
     public static async Task<MicroSecondTasData> LoadAsync(string path)
