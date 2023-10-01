@@ -109,7 +109,7 @@ public class Decay(IEnumerable<Time> time, IEnumerable<Signal> signals) : IEnume
         => d * a;
 
     /// <summary>
-    /// Calculates the decay divied by a constant.
+    /// Calculates the decay divided by a constant.
     /// </summary>
     /// <param name="d">The decay to be divided.</param>
     /// <param name="a">A constant value.</param>
@@ -118,7 +118,7 @@ public class Decay(IEnumerable<Time> time, IEnumerable<Signal> signals) : IEnume
         => new(d.time, d.signals.Select(d => d / a));
 
     /// <summary>
-    /// Calculates the decay divied by a constant.
+    /// Calculates the decay divided by a constant.
     /// </summary>
     /// <param name="d">The decay to be divided.</param>
     /// <param name="a">A constant value.</param>
@@ -127,7 +127,7 @@ public class Decay(IEnumerable<Time> time, IEnumerable<Signal> signals) : IEnume
         => new(d.time, d.signals.Select(d => d / a));
 
     /// <summary>
-    /// Calculates the decay divied by a constant.
+    /// Calculates the decay divided by a constant.
     /// </summary>
     /// <param name="d">The decay to be divided.</param>
     /// <param name="a">A constant value.</param>

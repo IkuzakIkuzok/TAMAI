@@ -18,17 +18,17 @@ public readonly struct Signal(double od) : IRatioScalePhysicalQuantity<Signal>, 
     public static Signal Zero => zero;
 
     /// <summary>
-    /// Gets the singnal intensity, in OD.
+    /// Gets the signal intensity, in OD.
     /// </summary>
     public double OD { get; } = od;
 
     /// <summary>
-    /// Gets the singnal intensity, in mOD.
+    /// Gets the signal intensity, in mOD.
     /// </summary>
     public Signal MilliOD => this * 1_000;
 
     /// <summary>
-    /// Gets the singnal intensity, in uOD.
+    /// Gets the signal intensity, in uOD.
     /// </summary>
     public Signal MicroOD => this * 1_000_000;
 

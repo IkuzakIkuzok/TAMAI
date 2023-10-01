@@ -26,7 +26,7 @@ public interface IPhysicalQuantity<TSelf> :
     /// Rounds the current instance to the specified number of significant digits.
     /// </summary>
     /// <param name="value">The value to be rounded.</param>
-    /// <param name="significance">The significant difits.</param>
+    /// <param name="significance">The significant digits.</param>
     /// <param name="round">A function to round a floating point number.</param>
     /// <returns>A new instance of <typeparamref name="TSelf"/> representing the rounded value.</returns>
     abstract static TSelf Round(TSelf value, int significance, Func<double, double>? round = null);

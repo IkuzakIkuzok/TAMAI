@@ -38,7 +38,7 @@ public class Spectrum(IEnumerable<Wavelength> wavelengths, IEnumerable<Signal> s
     public ReadOnlySpan<Wavelength> Wavelengths => this.wavelengths;
 
     /// <summary>
-    /// Gets the list of signals correspongind to <see cref="Wavelengths"/>.
+    /// Gets the list of signals corresponding to <see cref="Wavelengths"/>.
     /// </summary>
     public ReadOnlySpan<Signal> Signals => this.signals;
 

@@ -28,7 +28,7 @@ public abstract class StatsDist
         => (x) => ProbabilityDensityFunction(x, dof);
 
     /// <summary>
-    /// Evaluates a cumlative distribution function with the specified value and degree of freedom.
+    /// Evaluates a cumulative distribution function with the specified value and degree of freedom.
     /// </summary>
     /// <param name="x">The value at which the function is evaluated.</param>
     /// <param name="dof">The degree of freedom.</param>
