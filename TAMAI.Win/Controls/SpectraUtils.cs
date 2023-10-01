@@ -17,7 +17,7 @@ internal static class SpectraUtils
 {
     private static readonly CartesianMapper<SpectrumItem> spectrumMapper = new CartesianMapper<SpectrumItem>()
         .X(x => x.Key.Value)
-        .Y(x => (double)x.Value.MilliOD);
+        .Y(x => x.Value.MilliOD);
 
     private static ChartValues<SpectrumItem> ToChartSpectrum(this Spectrum spectrum)
         => new (spectrum);

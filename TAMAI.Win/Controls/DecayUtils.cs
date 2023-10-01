@@ -24,7 +24,7 @@ internal static class DecayUtils
         };
         return new CartesianMapper<DecayItem>()
             .X(item => Xmapper(item.Key.Second * bias))
-            .Y(item => Ymapper((double)item.Value.MilliOD));
+            .Y(item => Ymapper(item.Value.MilliOD));
     }
 
     private static ChartValues<DecayItem> ToChartDecay(this Decay decay)

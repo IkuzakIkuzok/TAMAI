@@ -25,12 +25,12 @@ public readonly struct Signal(double od) : IRatioScalePhysicalQuantity<Signal>, 
     /// <summary>
     /// Gets the signal intensity, in mOD.
     /// </summary>
-    public Signal MilliOD => this * 1_000;
+    public double MilliOD => this.OD * 1_000;
 
     /// <summary>
     /// Gets the signal intensity, in uOD.
     /// </summary>
-    public Signal MicroOD => this * 1_000_000;
+    public double MicroOD => this.OD * 1_000_000;
 
     /// <summary>
     /// Gets the absolute value of the signal.
