@@ -94,36 +94,36 @@ public readonly struct Signal(double od) : IRatioScalePhysicalQuantity<Signal>, 
     #region operators
 
     /// <inheritdoc/>
-    public static bool operator ==(Signal s1, Signal s2)
-        => s1.CompareTo(s2) == 0;
+    public static bool operator ==(Signal left, Signal right)
+        => left.CompareTo(right) == 0;
 
     /// <inheritdoc/>
-    public static bool operator !=(Signal s1, Signal s2)
-        => !(s1 == s2);
+    public static bool operator !=(Signal left, Signal right)
+        => !(left == right);
 
     /// <inheritdoc/>
-    public static bool operator >(Signal s1, Signal s2)
-        => s1.OD > s2.OD;
+    public static bool operator >(Signal left, Signal right)
+        => left.OD > right.OD;
 
     /// <inheritdoc/>
-    public static bool operator >=(Signal s1, Signal s2)
-        => s1 > s2 || s1 == s2;
+    public static bool operator >=(Signal left, Signal right)
+        => left > right || left == right;
 
     /// <inheritdoc/>
-    public static bool operator <(Signal s1, Signal s2)
-        => !(s1 >= s2);
+    public static bool operator <(Signal left, Signal right)
+        => !(left >= right);
 
     /// <inheritdoc/>
-    public static bool operator <=(Signal s1, Signal s2)
-        => !(s1 > s2);
+    public static bool operator <=(Signal left, Signal right)
+        => !(left > right);
 
     /// <inheritdoc/>
-    public static Signal operator +(Signal s1, Signal s2)
-        => new(s1.OD + s2.OD);
+    public static Signal operator +(Signal left, Signal right)
+        => new(left.OD + right.OD);
 
     /// <inheritdoc/>
-    public static Signal operator -(Signal s1, Signal s2)
-        => new(s1.OD - s2.OD);
+    public static Signal operator -(Signal left, Signal right)
+        => new(left.OD - right.OD);
 
     /// <summary>
     /// Calculates the signal multiplied by a constant.

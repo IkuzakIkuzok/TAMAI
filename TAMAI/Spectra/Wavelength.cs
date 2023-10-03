@@ -80,36 +80,36 @@ public readonly struct Wavelength(double value) : IPhysicalQuantity<Wavelength>
     #region operators
 
     /// <inheritdoc/>
-    public static bool operator ==(Wavelength wl1, Wavelength wl2)
-        => wl1.CompareTo(wl2) == 0;
+    public static bool operator ==(Wavelength left, Wavelength right)
+        => left.CompareTo(right) == 0;
 
     /// <inheritdoc/>
-    public static bool operator !=(Wavelength wl1, Wavelength wl2)
-        => !(wl1 == wl2);
+    public static bool operator !=(Wavelength left, Wavelength right)
+        => !(left == right);
 
     /// <inheritdoc/>
-    public static bool operator >(Wavelength wl1, Wavelength wl2)
-        => wl1.Value > wl2.Value;
+    public static bool operator >(Wavelength left, Wavelength right)
+        => left.Value > right.Value;
 
     /// <inheritdoc/>
-    public static bool operator >=(Wavelength wl1, Wavelength wl2)
-        => wl1 > wl2 || wl1 == wl2;
+    public static bool operator >=(Wavelength left, Wavelength right)
+        => left > right || left == right;
 
     /// <inheritdoc/>
-    public static bool operator <(Wavelength wl1, Wavelength wl2)
-        => !(wl1 >= wl2);
+    public static bool operator <(Wavelength left, Wavelength right)
+        => !(left >= right);
 
     /// <inheritdoc/>
-    public static bool operator <=(Wavelength wl1, Wavelength wl2)
-        => !(wl1 > wl2);
+    public static bool operator <=(Wavelength left, Wavelength right)
+        => !(left > right);
 
     /// <inheritdoc/>
-    public static Wavelength operator +(Wavelength wl1, Wavelength wl2)
-        => new(wl1.Value + wl2.Value);
+    public static Wavelength operator +(Wavelength left, Wavelength right)
+        => new(left.Value + right.Value);
 
     /// <inheritdoc/>
-    public static Wavelength operator -(Wavelength wl1, Wavelength wl2)
-        => new(wl1.Value - wl2.Value);
+    public static Wavelength operator -(Wavelength left, Wavelength right)
+        => new(left.Value - right.Value);
 
     #endregion operators
 } // public readonly struct Wavelength : IPhysicalQuantity<Wavelength>

@@ -95,36 +95,36 @@ public readonly struct Time(double second) : IRatioScalePhysicalQuantity<Time>
     #region operators
 
     /// <inheritdoc/>
-    public static bool operator ==(Time t1, Time t2)
-        => t1.CompareTo(t2) == 0;
+    public static bool operator ==(Time left, Time right)
+        => left.CompareTo(right) == 0;
 
     /// <inheritdoc/>
-    public static bool operator !=(Time t1, Time t2)
-        => !(t1 == t2);
+    public static bool operator !=(Time left, Time right)
+        => !(left == right);
 
     /// <inheritdoc/>
-    public static bool operator >(Time t1, Time t2)
-        => t1.Second > t2.Second;
+    public static bool operator >(Time left, Time right)
+        => left.Second > right.Second;
 
     /// <inheritdoc/>
-    public static bool operator >=(Time t1, Time t2)
-        => t1 > t2 || t1 == t2;
+    public static bool operator >=(Time left, Time right)
+        => left > right || left == right;
 
     /// <inheritdoc/>
-    public static bool operator <(Time t1, Time t2)
-        => !(t1 >= t2);
+    public static bool operator <(Time left, Time right)
+        => !(left >= right);
 
     /// <inheritdoc/>
-    public static bool operator <=(Time t1, Time t2)
-        => !(t1 > t2);
+    public static bool operator <=(Time left, Time right)
+        => !(left > right);
 
     /// <inheritdoc/>
-    public static Time operator +(Time t1, Time t2)
-        => new(t1.Second + t2.Second);
+    public static Time operator +(Time left, Time right)
+        => new(left.Second + right.Second);
 
     /// <inheritdoc/>
-    public static Time operator -(Time t1, Time t2)
-        => new(t1.Second - t2.Second);
+    public static Time operator -(Time left, Time right)
+        => new(left.Second - right.Second);
 
     /// <summary>
     /// Calculates the time multiplied by a constant.
